@@ -1,0 +1,27 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.0.0
+MinimumVisualStudioVersion = 10.0.0.1
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RoxieMobile.CSharpCommons", "src\RoxieMobile.CSharpCommons\RoxieMobile.CSharpCommons.xproj", "{7F5CAF8A-13C8-4FC4-8839-5A554A7068B9}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RoxieMobile.CSharpCommons.Logging", "src\RoxieMobile.CSharpCommons.Logging\RoxieMobile.CSharpCommons.Logging.xproj", "{1908CBEE-D2C6-4335-8372-F31A9BC9F788}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F5CAF8A-13C8-4FC4-8839-5A554A7068B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F5CAF8A-13C8-4FC4-8839-5A554A7068B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F5CAF8A-13C8-4FC4-8839-5A554A7068B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F5CAF8A-13C8-4FC4-8839-5A554A7068B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1908CBEE-D2C6-4335-8372-F31A9BC9F788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1908CBEE-D2C6-4335-8372-F31A9BC9F788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1908CBEE-D2C6-4335-8372-F31A9BC9F788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1908CBEE-D2C6-4335-8372-F31A9BC9F788}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
