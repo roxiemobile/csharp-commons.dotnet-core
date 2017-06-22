@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Provides Serilog logging integration for .NET Core projects.</Description>
+    <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
+    <AssemblyTitle>RoxieMobile.CSharpCommons.Logging</AssemblyTitle>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <Authors>Alexander Bragin</Authors>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <DebugType>portable</DebugType>
+    <AssemblyName>RoxieMobile.CSharpCommons.Logging</AssemblyName>
+    <PackageId>RoxieMobile.CSharpCommons.Logging</PackageId>
+    <PackageTags>c#;.netcore;logging;serilog</PackageTags>
+    <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../RoxieMobile.CSharpCommons/RoxieMobile.CSharpCommons.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DiagnosticAdapter" Version="1.1.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.0.1" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+  </ItemGroup>
+
+</Project>

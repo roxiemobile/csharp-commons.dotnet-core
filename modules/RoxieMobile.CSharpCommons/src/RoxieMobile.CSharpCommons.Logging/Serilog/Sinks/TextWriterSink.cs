@@ -22,7 +22,7 @@ namespace RoxieMobile.CSharpCommons.Logging.Serilog.Sinks
         public void Emit(LogEvent logEvent)
         {
             if (logEvent == null) throw new ArgumentNullException(nameof(logEvent));
-            lock (_syncRoot) {
+            lock (_syncLock) {
                 _textFormatter.Format(logEvent, _textWriter);
                 _textWriter.Flush();
             }
@@ -34,6 +34,6 @@ namespace RoxieMobile.CSharpCommons.Logging.Serilog.Sinks
 
         private readonly ITextFormatter _textFormatter;
 
-        private readonly object _syncRoot = new object();
+        private readonly object _syncLock = new object();
     }
 }

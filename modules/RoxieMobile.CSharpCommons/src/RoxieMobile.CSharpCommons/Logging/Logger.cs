@@ -10,9 +10,7 @@ namespace RoxieMobile.CSharpCommons.Logging
 
         private static readonly Lazy<Logger> LazyInstance = new Lazy<Logger>(() => new Logger());
 
-        private Logger() {
-            // Do nothing
-        }
+        private Logger() {}
 
 // MARK: - Properties
 
@@ -113,7 +111,8 @@ namespace RoxieMobile.CSharpCommons.Logging
 
 // MARK: - Methods
 
-        public static bool IsLoggable(LogLevel level) {
+        public static bool IsLoggable(LogLevel level)
+        {
             return level >= Shared.GetLogLevel();
         }
 
@@ -150,7 +149,7 @@ namespace RoxieMobile.CSharpCommons.Logging
 
 // MARK: - Variables
 
-        private IContract _logger = null;
+        private IContract _logger;
 
         private LogLevel _logLevel = LogLevel.Information;
 

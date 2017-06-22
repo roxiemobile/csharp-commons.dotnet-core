@@ -6,9 +6,9 @@ namespace RoxieMobile.CSharpCommons.DataAnnotations
     {
 // MARK: - Methods
 
-        public override bool IsValid(object value) {
+        public override bool IsValid(object value)
+        {
             return true;
         }
-
     }
 }
