@@ -4,7 +4,7 @@
     <Description>Provides Serilog logging integration for .NET Core projects.</Description>
     <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
     <AssemblyTitle>RoxieMobile.CSharpCommons.Logging</AssemblyTitle>
-    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionPrefix>0.1.1</VersionPrefix>
     <Authors>Alexander Bragin</Authors>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <DebugType>portable</DebugType>
