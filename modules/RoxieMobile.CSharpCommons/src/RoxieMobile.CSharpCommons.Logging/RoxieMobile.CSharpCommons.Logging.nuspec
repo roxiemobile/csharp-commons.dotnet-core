@@ -8,7 +8,7 @@
     <authors>$authors$</authors>
     <owners>$owners$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes/>
+    <releaseNotes />
     <copyright>$copyright$</copyright>
     <tags>$tags$</tags>
   </metadata>
