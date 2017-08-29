@@ -9,12 +9,12 @@ namespace RoxieMobile.CSharpCommons.Extensions
     {
 // MARK: - Methods
 
-        // FIXME: Code refactoring needed
+        [Obsolete("Code refactoring needed")]
         public static T ToEnum<T>(this string source)
         {
             var enumType = typeof(T);
-            foreach (var value in Enum.GetValues(enumType))
-            {
+            foreach (var value in Enum.GetValues(enumType)) {
+
                 var stringValue = value.ToString();
                 var attributeValue = enumType
                         .GetField(stringValue)

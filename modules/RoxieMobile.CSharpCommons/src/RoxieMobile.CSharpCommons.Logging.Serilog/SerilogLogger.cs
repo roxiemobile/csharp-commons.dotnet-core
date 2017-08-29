@@ -2,7 +2,7 @@
 using Serilog;
 using Serilog.Events;
 
-namespace RoxieMobile.CSharpCommons.Logging
+namespace RoxieMobile.CSharpCommons.Logging.Serilog
 {
     public sealed class SerilogLogger : Logger.IContract
     {

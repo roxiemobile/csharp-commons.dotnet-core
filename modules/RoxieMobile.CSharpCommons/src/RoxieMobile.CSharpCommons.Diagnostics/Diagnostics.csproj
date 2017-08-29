@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>RoxieMobile.CSharpCommons.Diagnostics</AssemblyName>
+    <VersionPrefix>0.1.2</VersionPrefix>
+    <Title>$(AssemblyName)</Title>
+    <Description>TODO:</Description>
+    <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
+    <Authors>Alexander Bragin</Authors>
+    <PackageTags>TODO:</PackageTags>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
+    <PackageId>$(AssemblyName)</PackageId>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <BaseOutputPath>.build/bin</BaseOutputPath>
+    <BaseIntermediateOutputPath>.build/obj</BaseIntermediateOutputPath>
+  </PropertyGroup>
+</Project>

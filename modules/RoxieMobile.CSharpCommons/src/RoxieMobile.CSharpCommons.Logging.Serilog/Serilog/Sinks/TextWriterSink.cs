@@ -12,7 +12,11 @@ namespace RoxieMobile.CSharpCommons.Logging.Serilog.Sinks
 
         public TextWriterSink(TextWriter textWriter, ITextFormatter textFormatter)
         {
-            if (textFormatter == null) throw new ArgumentNullException(nameof(textFormatter));
+            if (textFormatter == null) {
+                throw new ArgumentNullException(nameof(textFormatter));
+            }
+
+            // Init instance valiables
             _textWriter = textWriter;
             _textFormatter = textFormatter;
         }
@@ -21,7 +25,10 @@ namespace RoxieMobile.CSharpCommons.Logging.Serilog.Sinks
 
         public void Emit(LogEvent logEvent)
         {
-            if (logEvent == null) throw new ArgumentNullException(nameof(logEvent));
+            if (logEvent == null) {
+                throw new ArgumentNullException(nameof(logEvent));
+            }
+
             lock (_syncLock) {
                 _textFormatter.Format(logEvent, _textWriter);
                 _textWriter.Flush();

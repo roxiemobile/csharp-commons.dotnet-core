@@ -74,7 +74,7 @@ namespace RoxieMobile.CSharpCommons.Logging.Serilog
 // MARK: - Constants
 
         private const string DefaultOutputTemplate =
-                "[{Timestamp:yyyy-MM-dd HH:mm:ss.ffffff K}] {RequestId,13} [{Level:u3}]" +
-                " {Message} ({EventId:x8}){NewLine}{Exception}";
+            "[{Timestamp:yyyy-MM-dd HH:mm:ss.ffffff K}] {RequestId,13} [{Level:u3}]" +
+            " {Message} ({EventId:x8}){NewLine}{Exception}";
     }
 }

@@ -1,8 +1,8 @@
 namespace RoxieMobile.CSharpCommons.Lang
 {
     /// <summary>
-    /// The {@code Void} class is an uninstantiable placeholder class to hold a reference
-    /// to the {@code Class} object representing the C# keyword void.
+    /// The <see cref="Void"/> class is an uninstantiable placeholder class to hold a reference
+    /// to the class object representing the C# keyword void.
     /// </summary>
     public sealed class Void
     {

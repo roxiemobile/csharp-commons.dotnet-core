@@ -9,15 +9,14 @@ namespace RoxieMobile.CSharpCommons.DataAnnotations
 
         public MaxValueAttribute(long value)
         {
+            // Init instance variables
             _maxValue = value;
         }
 
 // MARK: - Methods
 
-        public override bool IsValid(object value)
-        {
-            return _maxValue >= Convert.ToInt64(value);
-        }
+        public override bool IsValid(object value) =>
+            _maxValue >= Convert.ToInt64(value);
 
 // MARK: - Variables
 

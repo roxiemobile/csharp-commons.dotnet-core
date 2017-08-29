@@ -10,13 +10,12 @@ using Microsoft.Extensions.DiagnosticAdapter;
 using Microsoft.Extensions.Logging.Abstractions.Internal;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RoxieMobile.CSharpCommons.Logging.Serilog;
 using Serilog;
 
 // Logging using DiagnosticSource in ASP.NET Core
 // @link https://andrewlock.net/logging-using-diagnosticsource-in-asp-net-core/
 
-namespace RoxieMobile.CSharpCommons.Logging
+namespace RoxieMobile.CSharpCommons.Logging.Serilog
 {
     public class MvcCoreDiagnosticListener
     {

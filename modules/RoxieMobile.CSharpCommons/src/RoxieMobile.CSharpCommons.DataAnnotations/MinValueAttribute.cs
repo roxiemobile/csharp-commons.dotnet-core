@@ -9,15 +9,14 @@ namespace RoxieMobile.CSharpCommons.DataAnnotations
 
         public MinValueAttribute(long value)
         {
+            // Init instance variables
             _minValue = value;
         }
 
 // MARK: - Methods
 
-        public override bool IsValid(object value)
-        {
-            return Convert.ToInt64(value) >= _minValue;
-        }
+        public override bool IsValid(object value) =>
+            Convert.ToInt64(value) >= _minValue;
 
 // MARK: - Variables
 

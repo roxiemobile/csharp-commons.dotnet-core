@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>RoxieMobile.CSharpCommons.Logging</AssemblyName>
+    <AssemblyName>RoxieMobile.CSharpCommons.Logging.Serilog</AssemblyName>
     <VersionPrefix>0.1.2</VersionPrefix>
     <Title>$(AssemblyName)</Title>
     <Description>Provides Serilog logging integration for .NET Core projects.</Description>
@@ -15,11 +15,15 @@
     <BaseIntermediateOutputPath>.build/obj</BaseIntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../RoxieMobile.CSharpCommons/RoxieMobile.CSharpCommons.csproj" />
+    <ProjectReference Include="../RoxieMobile.CSharpCommons.Logging/Logging.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.DiagnosticAdapter" Version="2.0.0" />
     <PackageReference Include="Serilog.Sinks.Async" Version="1.1.0" />
     <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Logging.Serilog.csproj.DotSettings" />
   </ItemGroup>
 </Project>
