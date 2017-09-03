@@ -2,7 +2,7 @@
 
 namespace RoxieMobile.CSharpCommons.Logging
 {
-    public sealed class Logger
+    public sealed partial class Logger
     {
 // MARK: - Construction
 
@@ -41,71 +41,6 @@ namespace RoxieMobile.CSharpCommons.Logging
         {
             lock (_syncLock) {
                 return _logLevel;
-            }
-        }
-
-// MARK: - Methods
-
-        public static void V(string tag, string msg)
-        {
-            if (IsLoggable(LogLevel.Verbose)) {
-                Shared.GetLogger()?.V(tag, msg);
-            }
-        }
-
-        public static void D(string tag, string msg)
-        {
-            if (IsLoggable(LogLevel.Debug)) {
-                Shared.GetLogger()?.D(tag, msg);
-            }
-        }
-
-        public static void I(string tag, string msg)
-        {
-            if (IsLoggable(LogLevel.Information)) {
-                Shared.GetLogger()?.I(tag, msg);
-            }
-        }
-
-        public static void W(string tag, string msg)
-        {
-            if (IsLoggable(LogLevel.Warning)) {
-                Shared.GetLogger()?.W(tag, msg);
-            }
-        }
-
-        public static void W(string tag, string msg, Exception exc)
-        {
-            if (IsLoggable(LogLevel.Warning)) {
-                Shared.GetLogger()?.W(tag, msg, exc);
-            }
-        }
-
-        public static void W(string tag, Exception exc)
-        {
-            if (IsLoggable(LogLevel.Warning)) {
-                Shared.GetLogger()?.W(tag, exc);
-            }
-        }
-
-        public static void E(string tag, string msg)
-        {
-            if (IsLoggable(LogLevel.Error)) {
-                Shared.GetLogger()?.E(tag, msg);
-            }
-        }
-
-        public static void E(string tag, string msg, Exception exc)
-        {
-            if (IsLoggable(LogLevel.Error)) {
-                Shared.GetLogger()?.E(tag, msg, exc);
-            }
-        }
-
-        public static void E(string tag, Exception exc)
-        {
-            if (IsLoggable(LogLevel.Error)) {
-                Shared.GetLogger()?.E(tag, exc);
             }
         }
 

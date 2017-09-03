@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>RoxieMobile.CSharpCommons.Data</AssemblyName>
+    <VersionPrefix>0.1.2</VersionPrefix>
+    <Title>$(AssemblyName)</Title>
+    <Description>TODO:</Description>
+    <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
+    <Authors>Alexander Bragin</Authors>
+    <PackageTags>TODO:</PackageTags>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
+    <PackageId>$(AssemblyName)</PackageId>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <BaseOutputPath>.build/bin</BaseOutputPath>
+    <BaseIntermediateOutputPath>.build/obj</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../RoxieMobile.CSharpCommons.Abstractions/Abstractions.csproj" />
+    <ProjectReference Include="../RoxieMobile.CSharpCommons.DataAnnotations/DataAnnotations.csproj" />
+    <ProjectReference Include="../RoxieMobile.CSharpCommons.Logging/Logging.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+  </ItemGroup>
+</Project>

@@ -1,17 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 
 namespace RoxieMobile.CSharpCommons.Extensions
 {
     public static class IEnumerableExtension
     {
-// MARK: - Methods
+// MARK: - Methods: Generic Enumerable
 
-        public static bool IsNullOrEmpty(this IEnumerable source) =>
-            (source == null) || !source.Cast<object>().Any();
+        [Obsolete(Constants.WriteADescription)]
+        public static bool IsEmpty<T>(this IEnumerable<T> obj) =>
+            (obj == null) || !obj.Any();
 
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source) =>
-            (source == null) || !source.Any();
+        [Obsolete(Constants.WriteADescription)]
+        public static bool IsNotEmpty<T>(this IEnumerable<T> obj) =>
+            !obj.IsEmpty();
+
+// MARK: - Methods: Enumerable
+
+        [Obsolete(Constants.WriteADescription)]
+        public static bool IsEmpty(this IEnumerable obj) =>
+            (obj == null) || !obj.Cast<object>().Any();
+
+        [Obsolete(Constants.WriteADescription)]
+        public static bool IsNotEmpty(this IEnumerable obj) =>
+            !obj.IsEmpty();
     }
 }

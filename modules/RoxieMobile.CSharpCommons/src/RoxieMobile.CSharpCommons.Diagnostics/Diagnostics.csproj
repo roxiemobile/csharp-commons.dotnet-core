@@ -14,4 +14,12 @@
     <BaseOutputPath>.build/bin</BaseOutputPath>
     <BaseIntermediateOutputPath>.build/obj</BaseIntermediateOutputPath>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../RoxieMobile.CSharpCommons.Abstractions/Abstractions.csproj" />
+    <ProjectReference Include="../RoxieMobile.CSharpCommons.DataAnnotations/DataAnnotations.csproj" />
+    <ProjectReference Include="../RoxieMobile.CSharpCommons.Extensions/Extensions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Diagnostics.csproj.DotSettings" />
+  </ItemGroup>
 </Project>

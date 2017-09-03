@@ -1,4 +1,5 @@
 using System;
+using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 
 namespace RoxieMobile.CSharpCommons.Extensions
 {
@@ -6,6 +7,7 @@ namespace RoxieMobile.CSharpCommons.Extensions
     {
 // MARK: - Methods
 
+        [Obsolete(Constants.WriteADescription)]
         public static T Tap<T>(this T source, Action<T> action)
         {
             if (action == null) {
