@@ -3,10 +3,10 @@
     <AssemblyName>RoxieMobile.CSharpCommons.Abstractions</AssemblyName>
     <VersionPrefix>0.1.2</VersionPrefix>
     <Title>$(AssemblyName)</Title>
-    <Description>TODO:</Description>
+    <Description>The core abstractions and public interfaces used for .NET Core application development.</Description>
     <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
     <Authors>Alexander Bragin</Authors>
-    <PackageTags>TODO:</PackageTags>
+    <PackageTags>c#;.netcore;commons;abstractions</PackageTags>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
     <PackageId>$(AssemblyName)</PackageId>

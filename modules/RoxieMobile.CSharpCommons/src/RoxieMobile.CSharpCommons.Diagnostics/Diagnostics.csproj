@@ -3,10 +3,10 @@
     <AssemblyName>RoxieMobile.CSharpCommons.Diagnostics</AssemblyName>
     <VersionPrefix>0.1.2</VersionPrefix>
     <Title>$(AssemblyName)</Title>
-    <Description>TODO:</Description>
+    <Description>A collection of static classes for debugging and diagnostics of program contracts such as preconditions, postconditions, and invariants.</Description>
     <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
     <Authors>Alexander Bragin</Authors>
-    <PackageTags>TODO:</PackageTags>
+    <PackageTags>c#;.netcore;commons;diagnostics;guard</PackageTags>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
     <PackageId>$(AssemblyName)</PackageId>
