@@ -4,11 +4,12 @@
     <VersionPrefix>0.1.2</VersionPrefix>
     <Title>$(AssemblyName)</Title>
     <Description>The core abstractions and public interfaces used for .NET Core application development.</Description>
-    <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/roxiemobile/csharp-commons.dotnet-core</PackageProjectUrl>
     <Authors>Alexander Bragin</Authors>
+    <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
     <PackageTags>c#;.netcore;commons;abstractions</PackageTags>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-    <RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <BaseOutputPath>.build/bin</BaseOutputPath>
