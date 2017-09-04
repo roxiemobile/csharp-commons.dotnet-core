@@ -6,11 +6,12 @@ namespace RoxieMobile.CSharpCommons.Logging
     {
 // MARK: - Construction
 
-        public static Logger Shared => LazyInstance.Value;
+        public static Logger Shared => _instance.Value;
 
-        private static readonly Lazy<Logger> LazyInstance = new Lazy<Logger>(() => new Logger());
+        private static readonly Lazy<Logger> _instance = new Lazy<Logger>(() => new Logger());
 
-        private Logger() {}
+        private Logger()
+        {}
 
 // MARK: - Properties
 
@@ -70,14 +71,19 @@ namespace RoxieMobile.CSharpCommons.Logging
         {
             // Use Logger.V()
             Verbose,
+
             // Use Logger.D()
             Debug,
+
             // Use Logger.I()
             Information,
+
             // Use Logger.W()
             Warning,
+
             // Use Logger.E()
             Error,
+
             // Turn off all logging
             Suppress
         }
