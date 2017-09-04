@@ -1,5 +1,5 @@
 using System;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
+using System.IO;
 using Xunit;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
@@ -10,10 +10,17 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 
         [Theory]
         [InlineData("Check.Throws")]
-        [Obsolete(Strings.NotImplemented)]
         public void Throws(string method)
         {
-            throw new NotImplementedException();
+            CheckThrowsException(method,
+                () => Check.Throws<Exception>(() => {}));
+            CheckThrowsException(method,
+                () => Check.Throws<IOException>(() => throw new OperationCanceledException()));
+            CheckThrowsException(method,
+                () => Check.Throws<Exception>(() => throw new IOException()));
+
+            CheckNotThrowsException(method,
+                () => Check.Throws<IOException>(() => throw new IOException()));
         }
     }
 }

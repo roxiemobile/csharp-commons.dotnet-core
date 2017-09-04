@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 using Xunit;
 
@@ -10,10 +11,17 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 
         [Theory]
         [InlineData("Guard.Throws")]
-        [Obsolete(Strings.NotImplemented)]
         public void Throws(string method)
         {
-            throw new NotImplementedException();
+            GuardThrowsError(method,
+                () => Guard.Throws<Exception>(() => {}));
+            GuardThrowsError(method,
+                () => Guard.Throws<IOException>(() => throw new OperationCanceledException()));
+            GuardThrowsError(method,
+                () => Guard.Throws<Exception>(() => throw new IOException()));
+
+            GuardNotThrowsError(method,
+                () => Guard.Throws<IOException>(() => throw new IOException()));
         }
     }
 }
