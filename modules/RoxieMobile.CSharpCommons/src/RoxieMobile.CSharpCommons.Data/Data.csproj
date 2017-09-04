@@ -17,9 +17,11 @@
   <ItemGroup>
     <ProjectReference Include="../RoxieMobile.CSharpCommons.Abstractions/Abstractions.csproj" />
     <ProjectReference Include="../RoxieMobile.CSharpCommons.DataAnnotations/DataAnnotations.csproj" />
+    <ProjectReference Include="../RoxieMobile.CSharpCommons.Diagnostics/Diagnostics.csproj" />
     <ProjectReference Include="../RoxieMobile.CSharpCommons.Logging/Logging.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
 </Project>

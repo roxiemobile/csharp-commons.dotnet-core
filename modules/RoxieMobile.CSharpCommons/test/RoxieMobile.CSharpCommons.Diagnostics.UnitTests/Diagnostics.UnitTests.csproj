@@ -27,6 +27,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.Data/Data.csproj" />
     <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.DataAnnotations/DataAnnotations.csproj" />
     <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.Diagnostics/Diagnostics.csproj" />
     <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.Extensions/Extensions.csproj" />

@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using RoxieMobile.CSharpCommons.Abstractions.Models;
+using RoxieMobile.CSharpCommons.Data.Serialization.Json;
 using RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Models;
 using Xunit;
 
@@ -28,13 +29,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         [InlineData("Check.Valid", "test_parking_model_with_valid_vehicles_in_array")]
         public void ValidModel(string method, string fileName)
         {
-            var jsonString = LoadJsonString(fileName);
+            var json = LoadJsonString(fileName);
             Assert.NotNull($"Could not parse JSON from file ‘Fixtures/{fileName}.json’");
 
             ParkingModel parking = null;
 
             CheckNotThrowsException($"{method}_Model", typeof(JsonSerializationException),
-                () => parking = FromJson<ParkingModel>(jsonString, SnakeCaseJsonSerializerSettings));
+                () => parking = JsonCoder.FromSnakeCaseJson<ParkingModel>(json));
 
             Assert.NotNull(parking);
             Assert.True(parking.IsValid());
