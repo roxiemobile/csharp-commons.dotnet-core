@@ -7,14 +7,14 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 // MARK: - Tests
 
         [Theory]
-        [InlineData("Guard.IsFalse")]
-        public void IsFalse(string method)
+        [InlineData("Guard.Null")]
+        public void Null(string method)
         {
             GuardThrowsError(method,
-                () => Guard.IsFalse(2 > 1));
+                () => Guard.Null(2));
 
             GuardNotThrowsError(method,
-                () => Guard.IsFalse(1 > 2));
+                () => Guard.Null(null));
         }
     }
 }

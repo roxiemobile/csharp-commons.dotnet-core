@@ -7,14 +7,14 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 // MARK: - Tests
 
         [Theory]
-        [InlineData("Check.IsTrue")]
-        public void IsTrue(string method)
+        [InlineData("Check.False")]
+        public void False(string method)
         {
             CheckThrowsException(method,
-                () => Check.IsTrue(1 > 2));
+                () => Check.False(2 > 1));
 
             CheckNotThrowsException(method,
-                () => Check.IsTrue(2 > 1));
+                () => Check.False(1 > 2));
         }
     }
 }

@@ -22,6 +22,11 @@
     -->
   </PropertyGroup>
   <ItemGroup>
+    <None Update="Fixtures/**/*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.DataAnnotations/DataAnnotations.csproj" />
     <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.Diagnostics/Diagnostics.csproj" />
     <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.Extensions/Extensions.csproj" />
