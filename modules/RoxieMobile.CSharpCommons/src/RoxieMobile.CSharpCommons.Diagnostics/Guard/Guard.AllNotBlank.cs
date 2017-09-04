@@ -10,7 +10,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.NotImplemented)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNotBlank(string[] values, string message = null)
         {
             if (TryIsFailure(() => Check.AllNotBlank(values), out Exception cause)) {
@@ -18,7 +18,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Strings.NotImplemented)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNotBlank(string[] values, Func<string> block)
         {
             if (block == null) {
