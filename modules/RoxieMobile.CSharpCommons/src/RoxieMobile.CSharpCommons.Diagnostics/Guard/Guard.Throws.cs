@@ -10,7 +10,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Throws(Type expectedException, Action action, string message = null)
         {
             if (action == null) {
@@ -22,7 +22,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Throws(Type expectedException, Action action, Func<string> block)
         {
             if (action == null) {

@@ -12,7 +12,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods: String
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty(string value, string message = null)
         {
             if (!value.IsEmpty()) {
@@ -20,7 +20,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty(string value, Func<string> block)
         {
             if (block == null) {
@@ -34,7 +34,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 
 // MARK: - Methods: Array
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty<T>(T[] array, string message = null)
         {
             if (!array.IsEmpty()) {
@@ -42,7 +42,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty<T>(T[] array, Func<string> block)
         {
             if (block == null) {
@@ -56,7 +56,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 
 // MARK: - Methods: Collection
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty<T>(ICollection<T> collection, string message = null)
         {
             if (!collection.IsEmpty()) {
@@ -64,7 +64,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty<T>(ICollection<T> collection, Func<string> block)
         {
             if (block == null) {

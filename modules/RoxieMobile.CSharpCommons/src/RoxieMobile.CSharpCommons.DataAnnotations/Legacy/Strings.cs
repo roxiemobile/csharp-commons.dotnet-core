@@ -3,7 +3,7 @@
 namespace RoxieMobile.CSharpCommons.DataAnnotations.Legacy
 {
     [Obsolete(MustBeDeleted)]
-    public static class Constants
+    public static class Strings
     {
         [Obsolete(MustBeDeleted)]
         public const string CodeRefactoringIsRequired = "Code refactoring is required.";

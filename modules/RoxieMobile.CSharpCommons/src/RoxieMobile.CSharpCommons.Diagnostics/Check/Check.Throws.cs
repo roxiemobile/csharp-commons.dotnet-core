@@ -53,13 +53,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 //         throw new ExpectationException(message);
 //     }
 
-        [Obsolete(Constants.NotImplemented)]
+        [Obsolete(Strings.NotImplemented)]
         public static void Throws(Type expectedException, Action action, string message = null)
         {
             throw new NotImplementedException();
         }
 
-        [Obsolete(Constants.NotImplemented)]
+        [Obsolete(Strings.NotImplemented)]
         public static void Throws(Type expectedException, Action action, Func<string> block)
         {
             if (block == null) {

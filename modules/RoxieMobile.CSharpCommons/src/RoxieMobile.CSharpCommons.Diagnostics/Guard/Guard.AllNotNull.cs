@@ -11,7 +11,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods: Array
 
-        [Obsolete(Constants.NotImplemented)]
+        [Obsolete(Strings.NotImplemented)]
         public static void AllNotNull<T>(T[] objects, string message = null)
         {
             if (TryIsFailure(() => Check.AllNotNull(objects), out Exception cause)) {
@@ -19,7 +19,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.NotImplemented)]
+        [Obsolete(Strings.NotImplemented)]
         public static void AllNotNull<T>(T[] objects, Func<string> block)
         {
             if (block == null) {
@@ -33,7 +33,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 
 // MARK: - Methods: Collection
 
-        [Obsolete(Constants.NotImplemented)]
+        [Obsolete(Strings.NotImplemented)]
         public static void AllNotNull<T>(ICollection<T> collection, string message = null)
         {
             if (TryIsFailure(() => Check.AllNotNull(collection), out Exception cause)) {
@@ -41,7 +41,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.NotImplemented)]
+        [Obsolete(Strings.NotImplemented)]
         public static void AllNotNull<T>(ICollection<T> collection, Func<string> block)
         {
             if (block == null) {

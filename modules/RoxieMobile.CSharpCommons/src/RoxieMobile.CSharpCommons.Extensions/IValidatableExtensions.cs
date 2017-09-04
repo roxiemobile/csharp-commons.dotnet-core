@@ -6,15 +6,15 @@ namespace RoxieMobile.CSharpCommons.Extensions
 {
     public static class IValidatableExtensions
     {
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsNotValid(this IValidatable obj) =>
             obj != null && !obj.IsValid();
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsNullOrValid(this IValidatable obj) =>
             obj == null || obj.IsValid();
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsNullOrNotValid(this IValidatable obj) =>
             obj == null || !obj.IsValid();
     }

@@ -10,7 +10,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void LessThan<TValue>(TValue value, TValue max, string message = null)
             where TValue : IComparable<TValue>
         {
@@ -19,7 +19,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void LessThan<TValue>(TValue value, TValue max, Func<string> block)
             where TValue : IComparable<TValue>
         {

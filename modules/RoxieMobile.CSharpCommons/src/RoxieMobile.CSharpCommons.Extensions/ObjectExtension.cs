@@ -7,7 +7,7 @@ namespace RoxieMobile.CSharpCommons.Extensions
     {
 // MARK: - Methods
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static T Tap<T>(this T source, Action<T> action)
         {
             if (action == null) {

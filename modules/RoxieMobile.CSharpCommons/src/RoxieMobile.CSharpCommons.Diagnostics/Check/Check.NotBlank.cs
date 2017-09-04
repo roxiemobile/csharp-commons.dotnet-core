@@ -11,7 +11,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void NotBlank(string value, string message = null)
         {
             if (!value.IsNotBlank()) {
@@ -19,7 +19,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void NotBlank(string value, Func<string> block)
         {
             if (block == null) {

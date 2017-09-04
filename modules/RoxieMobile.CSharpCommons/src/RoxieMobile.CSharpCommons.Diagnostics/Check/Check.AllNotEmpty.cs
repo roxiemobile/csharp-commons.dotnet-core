@@ -12,7 +12,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNotEmpty(string[] values, string message = null)
         {
             if (!TryAllNotEmpty(values)) {
@@ -20,7 +20,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNotEmpty(string[] values, Func<string> block)
         {
             if (block == null) {

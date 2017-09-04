@@ -13,7 +13,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods: Array
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNull<T>(T[] objects, string message = null)
         {
             if (!TryAllNull(objects)) {
@@ -21,7 +21,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNull<T>(T[] objects, Func<string> block)
         {
             if (block == null) {
@@ -35,7 +35,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 
 // MARK: - Methods: Generic Collection
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNull<T>(ICollection<T> collection, string message = null)
         {
             if (!TryAllNull(collection)) {
@@ -43,7 +43,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNull<T>(ICollection<T> collection, Func<string> block)
         {
             if (block == null) {

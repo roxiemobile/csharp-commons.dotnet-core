@@ -9,21 +9,21 @@ namespace RoxieMobile.CSharpCommons.Extensions
     {
 // MARK: - Methods: Generic Collection
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsEmpty<T>(this ICollection<T> obj) =>
             (obj == null) || (obj.Count < 1);
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsNotEmpty<T>(this ICollection<T> obj) =>
             !obj.IsEmpty();
 
 // MARK: - Methods: Collection
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsEmpty(this ICollection obj) =>
             (obj == null) || (obj.Count < 1);
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsNotEmpty(this ICollection obj) =>
             !obj.IsEmpty();
     }

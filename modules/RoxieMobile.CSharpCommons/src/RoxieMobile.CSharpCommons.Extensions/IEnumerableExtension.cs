@@ -10,21 +10,21 @@ namespace RoxieMobile.CSharpCommons.Extensions
     {
 // MARK: - Methods: Generic Enumerable
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsEmpty<T>(this IEnumerable<T> obj) =>
             (obj == null) || !obj.Any();
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsNotEmpty<T>(this IEnumerable<T> obj) =>
             !obj.IsEmpty();
 
 // MARK: - Methods: Enumerable
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsEmpty(this IEnumerable obj) =>
             (obj == null) || !obj.Cast<object>().Any();
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsNotEmpty(this IEnumerable obj) =>
             !obj.IsEmpty();
     }

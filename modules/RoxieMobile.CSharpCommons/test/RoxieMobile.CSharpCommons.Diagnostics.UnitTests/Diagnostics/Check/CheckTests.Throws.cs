@@ -10,7 +10,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 
         [Theory]
         [InlineData("Check.Throws")]
-        [Obsolete(Constants.NotImplemented)]
+        [Obsolete(Strings.NotImplemented)]
         public void Throws(string method)
         {
             throw new NotImplementedException();

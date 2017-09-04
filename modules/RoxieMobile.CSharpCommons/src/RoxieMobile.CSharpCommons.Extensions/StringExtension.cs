@@ -10,23 +10,23 @@ namespace RoxieMobile.CSharpCommons.Extensions
     {
 // MARK: - Methods
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsEmpty(this string value) =>
             string.IsNullOrEmpty(value);
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsNotEmpty(this string value) =>
             !value.IsEmpty();
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsBlank(this string value) =>
             string.IsNullOrWhiteSpace(value);
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static bool IsNotBlank(this string value) =>
             !value.IsBlank();
 
-        [Obsolete(Constants.CodeRefactoringIsRequired)]
+        [Obsolete(Strings.CodeRefactoringIsRequired)]
         public static T ToEnum<T>(this string source)
         {
             var enumType = typeof(T);

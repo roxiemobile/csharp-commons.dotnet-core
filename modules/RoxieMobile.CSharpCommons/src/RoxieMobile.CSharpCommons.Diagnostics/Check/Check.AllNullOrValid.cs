@@ -13,7 +13,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNullOrValid(IValidatable[] objects, string message = null)
         {
             if (!TryAllNullOrValid(objects)) {
@@ -21,7 +21,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void AllNullOrValid(IValidatable[] objects, Func<string> block)
         {
             if (block == null) {

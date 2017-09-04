@@ -11,7 +11,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods: String
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty(string value, string message = null)
         {
             if (TryIsFailure(() => Check.Empty(value), out Exception cause)) {
@@ -19,7 +19,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty(string value, Func<string> block)
         {
             if (block == null) {
@@ -33,7 +33,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 
 // MARK: - Methods: Array
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty<T>(T[] array, string message = null)
         {
             if (TryIsFailure(() => Check.Empty(array), out Exception cause)) {
@@ -41,7 +41,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty<T>(T[] array, Func<string> block)
         {
             if (block == null) {
@@ -55,7 +55,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 
 // MARK: - Methods: Generic Collection
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty<T>(ICollection<T> collection, string message = null)
         {
             if (TryIsFailure(() => Check.Empty(collection), out Exception cause)) {
@@ -63,7 +63,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void Empty<T>(ICollection<T> collection, Func<string> block)
         {
             if (block == null) {

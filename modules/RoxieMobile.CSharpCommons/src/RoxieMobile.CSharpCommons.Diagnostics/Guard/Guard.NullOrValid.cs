@@ -11,7 +11,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void NullOrValid(IValidatable obj, string message = null)
         {
             if (TryIsFailure(() => Check.NullOrValid(obj), out Exception cause)) {
@@ -19,7 +19,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         public static void NullOrValid(IValidatable obj, Func<string> block)
         {
             if (block == null) {

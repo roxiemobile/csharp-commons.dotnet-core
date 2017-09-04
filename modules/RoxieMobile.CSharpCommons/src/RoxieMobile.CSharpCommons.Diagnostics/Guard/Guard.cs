@@ -18,7 +18,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Constants.WriteADescription)]
+        [Obsolete(Strings.WriteADescription)]
         private static bool TryIsFailure(Action block, out Exception cause)
         {
             if (block == null) {
