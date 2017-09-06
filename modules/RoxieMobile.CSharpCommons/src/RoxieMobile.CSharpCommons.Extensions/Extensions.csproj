@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="../RoxieMobile.CSharpCommons.Abstractions/Abstractions.csproj" />
     <ProjectReference Include="../RoxieMobile.CSharpCommons.DataAnnotations/DataAnnotations.csproj" />
+    <ProjectReference Include="../RoxieMobile.CSharpCommons.Lang/Lang.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />

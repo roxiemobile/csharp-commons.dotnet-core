@@ -1,5 +1,4 @@
 using System;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics
 {
@@ -10,7 +9,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all a string objects in array is <c>null</c> or empty.
+        /// </summary>
+        /// <param name="values">An array of string objects.</param>
+        /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
+        /// <exception cref="GuardError" />
         public static void AllEmpty(string[] values, string message = null)
         {
             if (TryIsFailure(() => Check.AllEmpty(values), out Exception cause)) {
@@ -18,7 +22,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all a string objects in array is <c>null</c> or empty.
+        /// </summary>
+        /// <param name="values">An array of string objects.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="GuardError"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
+        /// <exception cref="GuardError" />
         public static void AllEmpty(string[] values, Func<string> block)
         {
             if (block == null) {

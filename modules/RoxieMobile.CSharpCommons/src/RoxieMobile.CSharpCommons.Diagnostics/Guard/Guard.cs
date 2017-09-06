@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 
 // Elysium-Extra/Source/Framework/Guard 
 // @link https://github.com/RehanSaeed/Elysium-Extra/tree/master/Source/Framework/Guard
@@ -18,7 +17,25 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GuardError"/> class with a specified error message and a reference to the inner exception that is the cause of this error.
+        /// </summary>
+        /// <param name="message">The error message that explains the reason for the error.</param>
+        /// <param name="innerException">The exception that is the cause of the current error, or a <c>null</c> reference if no inner exception is specified.</param>
+        public static GuardError NewGuardError(string message, Exception innerException = null) =>
+            string.IsNullOrWhiteSpace(message)
+                ? new GuardError(innerException)
+                : new GuardError(message, innerException);
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GuardError"/> class with a reference to the inner exception that is the cause of this error.
+        /// </summary>
+        /// <param name="innerException">The exception that is the cause of the current error, or a <c>null</c> reference if no inner exception is specified.</param>
+        public static GuardError NewGuardError(Exception innerException = null) =>
+            new GuardError(innerException);
+
+// MARK: - Private Methods
+
         private static bool TryIsFailure(Action block, out Exception cause)
         {
             if (block == null) {
@@ -35,22 +52,5 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 
             return (cause != null);
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GuardError"/> class with a specified error message and a reference to the inner exception that is the cause of this error.
-        /// </summary>
-        /// <param name="message">The error message that explains the reason for the error.</param>
-        /// <param name="innerException">The exception that is the cause of the current error, or a <c>null</c> reference if no inner exception is specified.</param>
-        private static GuardError NewGuardError(string message, Exception innerException = null) =>
-            string.IsNullOrWhiteSpace(message)
-                ? new GuardError(innerException)
-                : new GuardError(message, innerException);
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GuardError"/> class with a reference to the inner exception that is the cause of this error.
-        /// </summary>
-        /// <param name="innerException">The exception that is the cause of the current error, or a <c>null</c> reference if no inner exception is specified.</param>
-        private static GuardError NewGuardError(Exception innerException = null) =>
-            new GuardError(innerException);
     }
 }

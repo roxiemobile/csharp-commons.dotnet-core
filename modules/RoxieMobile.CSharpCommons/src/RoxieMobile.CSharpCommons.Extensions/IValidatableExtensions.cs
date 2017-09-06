@@ -1,21 +1,31 @@
-﻿using System;
-using RoxieMobile.CSharpCommons.Abstractions.Models;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
+﻿using RoxieMobile.CSharpCommons.Abstractions.Models;
 
 namespace RoxieMobile.CSharpCommons.Extensions
 {
     public static class IValidatableExtensions
     {
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that an object is not valid.
+        /// </summary>
+        /// <param name="obj">Object to check.</param>
+        /// <returns><c>true</c> if the <paramref name="obj"/> is not valid.</returns>
         public static bool IsNotValid(this IValidatable obj) =>
-            obj != null && !obj.IsValid();
+            !obj.IsValid();
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that an object is <c>null</c> or valid.
+        /// </summary>
+        /// <param name="obj">Object to check.</param>
+        /// <returns><c>true</c> if the <paramref name="obj"/> is <c>null</c> or valid.</returns>
         public static bool IsNullOrValid(this IValidatable obj) =>
-            obj == null || obj.IsValid();
+            obj?.IsValid() ?? true;
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that an object is <c>null</c> or not valid.
+        /// </summary>
+        /// <param name="obj">Object to check.</param>
+        /// <returns><c>true</c> if the <paramref name="obj"/> is <c>null</c> or not valid.</returns>
         public static bool IsNullOrNotValid(this IValidatable obj) =>
-            obj == null || !obj.IsValid();
+            !obj?.IsValid() ?? true;
     }
 }

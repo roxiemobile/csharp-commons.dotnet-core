@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.Serialization;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 
 namespace RoxieMobile.CSharpCommons.Extensions
 {
@@ -10,26 +8,53 @@ namespace RoxieMobile.CSharpCommons.Extensions
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that a string is <c>null</c> or empty.
+        /// </summary>
+        /// <param name="value">The string to check or <c>null</c>.</param>
+        /// <returns><c>true</c> if the <paramref name="value"/> is <c>null</c> or empty.</returns>
         public static bool IsEmpty(this string value) =>
             string.IsNullOrEmpty(value);
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that a string is not <c>null</c> and not empty.
+        /// </summary>
+        /// <param name="value">The string to check or <c>null</c>.</param>
+        /// <returns><c>true</c> if the <paramref name="value"/> is not <c>null</c> and not empty.</returns>
         public static bool IsNotEmpty(this string value) =>
             !value.IsEmpty();
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that a string is <c>null</c>, empty or contains only whitespace characters.
+        /// </summary>
+        /// <param name="value">The string to test or <c>null</c>.</param>
+        /// <returns><c>true</c> if the <paramref name="value"/> is null or empty, or if <paramref name="value"/> contains only whitespace characters.</returns>
         public static bool IsBlank(this string value) =>
             string.IsNullOrWhiteSpace(value);
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that a string is not <c>null</c>, not empty and contains not only whitespace characters.
+        /// </summary>
+        /// <param name="value">The string to test or <c>null</c>.</param>
+        /// <returns><c>true</c> if the <paramref name="value"/> is not null, not empty, and if <paramref name="value"/> contains not only whitespace characters.</returns>
         public static bool IsNotBlank(this string value) =>
             !value.IsBlank();
 
-        [Obsolete(Strings.CodeRefactoringIsRequired)]
-        public static T ToEnum<T>(this string source)
+        /// <summary>
+        /// Converts the string representation of the name or attribute value of one or more enumerated constants to an equivalent enumerated object.
+        /// </summary>
+        /// <typeparam name="TEnum">An enumeration type.</typeparam>
+        /// <param name="source">A string containing the name or attribute value to convert.</param>
+        /// <returns>An object of type <typeparamref name="TEnum"/> whose value is represented by <paramref name="source"/>.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when the <paramref name="source"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentException">Thrown when the <paramref name="source"/> is a name, but not one of the named constants defined for the enumeration.</exception>
+        public static TEnum ToEnumValue<TEnum>(this string source)
         {
-            var enumType = typeof(T);
+            if (source == null) {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            var enumType = typeof(TEnum);
             foreach (var value in Enum.GetValues(enumType)) {
 
                 var stringValue = value.ToString();
@@ -41,11 +66,11 @@ namespace RoxieMobile.CSharpCommons.Extensions
                     .SingleOrDefault() ?? stringValue;
 
                 if (string.Equals(source, attributeValue, StringComparison.OrdinalIgnoreCase)) {
-                    return (T) value;
+                    return (TEnum) value;
                 }
             }
 
-            // Done
+            // Not found
             throw new ArgumentException($"The value ‘{source}’ is not supported.");
         }
     }

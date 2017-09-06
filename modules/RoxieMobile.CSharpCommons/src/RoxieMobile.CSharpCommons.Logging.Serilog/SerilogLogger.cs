@@ -17,7 +17,7 @@ namespace RoxieMobile.CSharpCommons.Logging.Serilog
 
 // MARK: - Properties
 
-        public Logger.LogLevel MinimumLogLevel { get; private set; }
+        public Logger.LogLevel MinimumLogLevel { get; }
 
 // MARK: - Methods
 

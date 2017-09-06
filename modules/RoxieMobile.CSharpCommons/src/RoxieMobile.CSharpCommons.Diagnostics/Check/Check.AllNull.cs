@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 using RoxieMobile.CSharpCommons.Extensions;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics
@@ -13,7 +12,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods: Array
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in array is <c>null</c>.
+        /// </summary>
+        /// <param name="objects">An array of objects.</param>
+        /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
+        /// <exception cref="CheckException" />
         public static void AllNull<T>(T[] objects, string message = null)
         {
             if (!TryAllNull(objects)) {
@@ -21,7 +25,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in array is <c>null</c>.
+        /// </summary>
+        /// <param name="objects">An array of objects.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
+        /// <exception cref="CheckException" />
         public static void AllNull<T>(T[] objects, Func<string> block)
         {
             if (block == null) {
@@ -35,7 +45,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 
 // MARK: - Methods: Generic Collection
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in collection is <c>null</c>.
+        /// </summary>
+        /// <param name="collection">A collection of objects.</param>
+        /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
+        /// <exception cref="CheckException" />
         public static void AllNull<T>(ICollection<T> collection, string message = null)
         {
             if (!TryAllNull(collection)) {
@@ -43,7 +58,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in collection is <c>null</c>.
+        /// </summary>
+        /// <param name="collection">A collection of objects.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
+        /// <exception cref="CheckException" />
         public static void AllNull<T>(ICollection<T> collection, Func<string> block)
         {
             if (block == null) {

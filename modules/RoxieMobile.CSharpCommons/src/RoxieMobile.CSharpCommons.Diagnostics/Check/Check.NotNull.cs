@@ -10,10 +10,10 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 // MARK: - Methods
 
         /// <summary>
-        /// Checks that an object isn't null. If it is an <see cref="CheckException"/> is thrown with the given message.
+        /// Checks that an object isn't <c>null</c>.
         /// </summary>
-        /// <param name="reference">Object to check or <c>null</c></param>
-        /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay)</param>
+        /// <param name="reference">Object to check or <c>null</c>.</param>
+        /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
         /// <exception cref="CheckException" />
         public static void NotNull(object reference, string message = null)
         {
@@ -23,11 +23,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         }
 
         /// <summary>
-        /// Checks that an object isn't null. If it is an <see cref="CheckException"/> is thrown with the given message.
+        /// Checks that an object isn't <c>null</c>.
         /// </summary>
-        /// <param name="reference">Object to check or <c>null</c></param>
-        /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/></param>
-        /// <exception cref="ArgumentNullException" />
+        /// <param name="reference">Object to check or <c>null</c>.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="CheckException" />
         public static void NotNull(object reference, Func<string> block)
         {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using RoxieMobile.CSharpCommons.Abstractions.Models;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 using RoxieMobile.CSharpCommons.Extensions;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics
@@ -13,7 +12,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in array is <c>null</c> or valid.
+        /// </summary>
+        /// <param name="objects">An array of objects.</param>
+        /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
+        /// <exception cref="CheckException" />
         public static void AllNullOrValid(IValidatable[] objects, string message = null)
         {
             if (!TryAllNullOrValid(objects)) {
@@ -21,7 +25,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in array is <c>null</c> or valid.
+        /// </summary>
+        /// <param name="objects">An array of objects.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
+        /// <exception cref="CheckException" />
         public static void AllNullOrValid(IValidatable[] objects, Func<string> block)
         {
             if (block == null) {

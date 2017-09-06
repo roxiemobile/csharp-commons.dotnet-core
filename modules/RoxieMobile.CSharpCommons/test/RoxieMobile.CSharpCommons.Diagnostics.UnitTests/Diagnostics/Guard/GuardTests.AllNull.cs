@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 using Xunit;
 using static RoxieMobile.CSharpCommons.Extensions.ArrayUtils;
 

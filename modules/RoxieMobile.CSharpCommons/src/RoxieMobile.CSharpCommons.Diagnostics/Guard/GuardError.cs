@@ -1,12 +1,12 @@
 using System;
+using RoxieMobile.CSharpCommons.Lang;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics
 {
     /// <summary>
     /// Thrown to indicate that an validation has failed.
     /// </summary>
-    [Obsolete("Extend from uncatchable exception")]
-    public sealed class GuardError : Exception
+    public sealed class GuardError : Error
     {
 // MARK: - Construction
 

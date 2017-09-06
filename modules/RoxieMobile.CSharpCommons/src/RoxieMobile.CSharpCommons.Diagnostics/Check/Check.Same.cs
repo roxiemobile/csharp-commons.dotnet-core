@@ -31,7 +31,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="expected">The expected object</param>
         /// <param name="actual">The object to compare to <c>expected</c></param>
         /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/></param>
-        /// <exception cref="ArgumentNullException" />
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="CheckException" />
         public static void Same(object expected, object actual, Func<string> block)
         {

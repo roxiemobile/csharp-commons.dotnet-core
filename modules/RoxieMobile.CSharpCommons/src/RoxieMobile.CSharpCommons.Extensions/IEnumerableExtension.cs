@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 
 namespace RoxieMobile.CSharpCommons.Extensions
 {
@@ -10,22 +8,40 @@ namespace RoxieMobile.CSharpCommons.Extensions
     {
 // MARK: - Methods: Generic Enumerable
 
-        [Obsolete(Strings.WriteADescription)]
-        public static bool IsEmpty<T>(this IEnumerable<T> obj) =>
-            (obj == null) || !obj.Any();
+        /// <summary>
+        /// Checks that a sequence is <c>null</c> or not contains any elements. 
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter.</typeparam>
+        /// <param name="sequence">The sequence to check or <c>null</c>.</param>
+        /// <returns><c>true</c> if the <paramref name="sequence"/> is <c>null</c> or not contains any elements.</returns>
+        public static bool IsEmpty<T>(this IEnumerable<T> sequence) =>
+            !sequence?.Any() ?? true;
 
-        [Obsolete(Strings.WriteADescription)]
-        public static bool IsNotEmpty<T>(this IEnumerable<T> obj) =>
-            !obj.IsEmpty();
+        /// <summary>
+        /// Checks that a sequence is not <c>null</c> and contains any elements. 
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter.</typeparam>
+        /// <param name="sequence">The sequence to check or <c>null</c>.</param>
+        /// <returns><c>true</c> if the <paramref name="sequence"/> is not <c>null</c> and contains any elements.</returns>
+        public static bool IsNotEmpty<T>(this IEnumerable<T> sequence) =>
+            !sequence.IsEmpty();
 
 // MARK: - Methods: Enumerable
 
-        [Obsolete(Strings.WriteADescription)]
-        public static bool IsEmpty(this IEnumerable obj) =>
-            (obj == null) || !obj.Cast<object>().Any();
+        /// <summary>
+        /// Checks that a sequence is <c>null</c> or not contains any elements. 
+        /// </summary>
+        /// <param name="sequence">The sequence to check or <c>null</c>.</param>
+        /// <returns><c>true</c> if the <paramref name="sequence"/> is <c>null</c> or not contains any elements.</returns>
+        public static bool IsEmpty(this IEnumerable sequence) =>
+            !sequence?.Cast<object>().Any() ?? true;
 
-        [Obsolete(Strings.WriteADescription)]
-        public static bool IsNotEmpty(this IEnumerable obj) =>
-            !obj.IsEmpty();
+        /// <summary>
+        /// Checks that a sequence is not <c>null</c> and contains any elements. 
+        /// </summary>
+        /// <param name="sequence">The sequence to check or <c>null</c>.</param>
+        /// <returns><c>true</c> if the <paramref name="sequence"/> is not <c>null</c> and contains any elements.</returns>
+        public static bool IsNotEmpty(this IEnumerable sequence) =>
+            !sequence.IsEmpty();
     }
 }

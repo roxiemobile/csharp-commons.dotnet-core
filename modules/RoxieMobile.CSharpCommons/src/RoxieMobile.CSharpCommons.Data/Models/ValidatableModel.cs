@@ -1,5 +1,6 @@
 ﻿using System;
 using RoxieMobile.CSharpCommons.Abstractions.Models;
+using RoxieMobile.CSharpCommons.Diagnostics;
 using RoxieMobile.CSharpCommons.Logging;
 
 namespace RoxieMobile.CSharpCommons.Data.Models
@@ -20,7 +21,7 @@ namespace RoxieMobile.CSharpCommons.Data.Models
                 // Check state of the object
                 Validate();
             }
-            catch (Exception e) {
+            catch (CheckException e) {
                 var classType = GetType();
                 result = false;
 
@@ -45,8 +46,6 @@ namespace RoxieMobile.CSharpCommons.Data.Models
         /// Checks the current state of the object for correctness.
         /// </summary>
         public virtual void Validate()
-        {
-            // Do nothing
-        }
+        {}
     }
 }

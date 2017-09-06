@@ -1,6 +1,5 @@
 ﻿using System;
 using RoxieMobile.CSharpCommons.Abstractions.Models;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 using RoxieMobile.CSharpCommons.Extensions;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics
@@ -12,7 +11,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that an object is <c>null</c> or valid.
+        /// </summary>
+        /// <param name="obj">Object to check or <c>null</c>.</param>
+        /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
+        /// <exception cref="CheckException" />
         public static void NullOrValid(IValidatable obj, string message = null)
         {
             if (!obj.IsNullOrValid()) {
@@ -20,7 +24,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that an object is <c>null</c> or valid.
+        /// </summary>
+        /// <param name="obj">Object to check or <c>null</c>.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
+        /// <exception cref="CheckException" />
         public static void NullOrValid(IValidatable obj, Func<string> block)
         {
             if (block == null) {

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace RoxieMobile.CSharpCommons.DataAnnotations
+namespace RoxieMobile.CSharpCommons.DataAnnotations.Attributes
 {
     public class OptionalAttribute : ValidationAttribute
     {

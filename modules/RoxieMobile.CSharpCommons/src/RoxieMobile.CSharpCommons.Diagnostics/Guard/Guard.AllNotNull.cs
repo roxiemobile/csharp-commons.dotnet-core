@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics
 {
@@ -11,7 +10,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods: Array
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in array is not <c>null</c>.
+        /// </summary>
+        /// <param name="objects">An array of objects.</param>
+        /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
+        /// <exception cref="GuardError" />
         public static void AllNotNull<T>(T[] objects, string message = null)
         {
             if (TryIsFailure(() => Check.AllNotNull(objects), out Exception cause)) {
@@ -19,7 +23,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in array is not <c>null</c>.
+        /// </summary>
+        /// <param name="objects">An array of objects.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="GuardError"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
+        /// <exception cref="GuardError" />
         public static void AllNotNull<T>(T[] objects, Func<string> block)
         {
             if (block == null) {
@@ -33,7 +43,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 
 // MARK: - Methods: Collection
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in collection is not <c>null</c>.
+        /// </summary>
+        /// <param name="collection">A collection of objects.</param>
+        /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
+        /// <exception cref="GuardError" />
         public static void AllNotNull<T>(ICollection<T> collection, string message = null)
         {
             if (TryIsFailure(() => Check.AllNotNull(collection), out Exception cause)) {
@@ -41,7 +56,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that all an objects in collection is not <c>null</c>.
+        /// </summary>
+        /// <param name="collection">A collection of objects.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="GuardError"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
+        /// <exception cref="GuardError" />
         public static void AllNotNull<T>(ICollection<T> collection, Func<string> block)
         {
             if (block == null) {

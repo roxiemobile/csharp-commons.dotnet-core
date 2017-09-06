@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 using Xunit;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics

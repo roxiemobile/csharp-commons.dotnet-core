@@ -9,14 +9,14 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     [DebuggerStepThrough]
     public static partial class Check
     {
-// MARK: - Private Methods
+// MARK: - Methods
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckException"/> class with a specified error message and a reference to the inner exception that is the cause of this exception.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
         /// <param name="innerException">The exception that is the cause of the current exception, or a <c>null</c> reference if no inner exception is specified.</param>
-        private static CheckException NewCheckException(string message, Exception innerException = null) =>
+        public static CheckException NewCheckException(string message, Exception innerException = null) =>
             string.IsNullOrWhiteSpace(message)
                 ? new CheckException(innerException)
                 : new CheckException(message, innerException);
@@ -25,7 +25,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// Initializes a new instance of the <see cref="CheckException"/> class with a reference to the inner exception that is the cause of this exception.
         /// </summary>
         /// <param name="innerException">The exception that is the cause of the current exception, or a <c>null</c> reference if no inner exception is specified.</param>
-        private static CheckException NewCheckException(Exception innerException = null) =>
+        public static CheckException NewCheckException(Exception innerException = null) =>
             new CheckException(innerException);
     }
 }

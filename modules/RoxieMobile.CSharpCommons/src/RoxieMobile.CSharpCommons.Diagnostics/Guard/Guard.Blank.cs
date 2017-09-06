@@ -1,5 +1,4 @@
 using System;
-using RoxieMobile.CSharpCommons.DataAnnotations.Legacy;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics
 {
@@ -10,7 +9,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that a string is <c>null</c>, empty or contains only whitespace characters.
+        /// </summary>
+        /// <param name="value">The string to check or <c>null</c>.</param>
+        /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
+        /// <exception cref="GuardError" />
         public static void Blank(string value, string message = null)
         {
             if (TryIsFailure(() => Check.Blank(value), out Exception cause)) {
@@ -18,7 +22,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
+        /// <summary>
+        /// Checks that a string is <c>null</c>, empty or contains only whitespace characters.
+        /// </summary>
+        /// <param name="value">The string to check or <c>null</c>.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="GuardError"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
+        /// <exception cref="GuardError" />
         public static void Blank(string value, Func<string> block)
         {
             if (block == null) {
