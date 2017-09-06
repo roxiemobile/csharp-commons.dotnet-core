@@ -10,18 +10,33 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.WriteADescription)]
-        public static void LessThanOrEqualTo<TValue>(TValue value, TValue max, string message = null)
-            where TValue : IComparable<TValue>
+        /// <summary>
+        /// Checks that the parameter value is less than or equal to the maximum value, otherwise throws an <see cref="CheckException"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter</typeparam>
+        /// <param name="value">The parameter value</param>
+        /// <param name="max">The maximum</param>
+        /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay)</param>
+        /// <exception cref="CheckException" />
+        public static void LessThanOrEqualTo<T>(T value, T max, string message = null)
+            where T : IComparable<T>
         {
             if (value.CompareTo(max) > 0) {
                 throw NewCheckException(message);
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
-        public static void LessThanOrEqualTo<TValue>(TValue value, TValue max, Func<string> block)
-            where TValue : IComparable<TValue>
+        /// <summary>
+        /// Checks that the parameter value is less than or equal to the maximum value, otherwise throws an <see cref="CheckException"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter</typeparam>
+        /// <param name="value">The parameter value</param>
+        /// <param name="max">The maximum</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/></param>
+        /// <exception cref="ArgumentNullException" />
+        /// <exception cref="CheckException" />
+        public static void LessThanOrEqualTo<T>(T value, T max, Func<string> block)
+            where T : IComparable<T>
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));

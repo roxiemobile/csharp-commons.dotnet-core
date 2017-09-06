@@ -10,18 +10,33 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.WriteADescription)]
-        public static void GreaterThan<TValue>(TValue value, TValue min, string message = null)
-            where TValue : IComparable<TValue>
+        /// <summary>
+        /// Checks that the parameter value is greater than the minimum value, otherwise throws an <see cref="CheckException"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter</typeparam>
+        /// <param name="value">The parameter value</param>
+        /// <param name="min">The minimum</param>
+        /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay)</param>
+        /// <exception cref="CheckException" />
+        public static void GreaterThan<T>(T value, T min, string message = null)
+            where T : IComparable<T>
         {
             if (value.CompareTo(min) <= 0) {
                 throw NewCheckException(message);
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
-        public static void GreaterThan<TValue>(TValue value, TValue min, Func<string> block)
-            where TValue : IComparable<TValue>
+        /// <summary>
+        /// Checks that the parameter value is greater than the minimum value, otherwise throws an <see cref="CheckException"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter</typeparam>
+        /// <param name="value">The parameter value</param>
+        /// <param name="min">The minimum</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/></param>
+        /// <exception cref="ArgumentNullException" />
+        /// <exception cref="CheckException" />
+        public static void GreaterThan<T>(T value, T min, Func<string> block)
+            where T : IComparable<T>
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));

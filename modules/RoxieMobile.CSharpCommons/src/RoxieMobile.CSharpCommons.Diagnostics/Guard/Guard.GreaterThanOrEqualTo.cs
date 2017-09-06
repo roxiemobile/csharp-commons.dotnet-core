@@ -10,18 +10,33 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     {
 // MARK: - Methods
 
-        [Obsolete(Strings.WriteADescription)]
-        public static void GreaterThanOrEqualTo<TValue>(TValue value, TValue min, string message = null)
-            where TValue : IComparable<TValue>
+        /// <summary>
+        /// Checks that the parameter value is greater than or equal to the minimum value, otherwise throws an <see cref="GuardError"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter</typeparam>
+        /// <param name="value">The parameter value</param>
+        /// <param name="min">The minimum</param>
+        /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay)</param>
+        /// <exception cref="GuardError" />
+        public static void GreaterThanOrEqualTo<T>(T value, T min, string message = null)
+            where T : IComparable<T>
         {
             if (TryIsFailure(() => Check.GreaterThanOrEqualTo(value, min), out Exception cause)) {
                 throw NewGuardError(message, cause);
             }
         }
 
-        [Obsolete(Strings.WriteADescription)]
-        public static void GreaterThanOrEqualTo<TValue>(TValue value, TValue min, Func<string> block)
-            where TValue : IComparable<TValue>
+        /// <summary>
+        /// Checks that the parameter value is greater than or equal to the minimum value, otherwise throws an <see cref="GuardError"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter</typeparam>
+        /// <param name="value">The parameter value</param>
+        /// <param name="min">The minimum</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="GuardError"/></param>
+        /// <exception cref="ArgumentNullException" />
+        /// <exception cref="GuardError" />
+        public static void GreaterThanOrEqualTo<T>(T value, T min, Func<string> block)
+            where T : IComparable<T>
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));
