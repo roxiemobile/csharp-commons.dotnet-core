@@ -20,8 +20,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lang", "src\RoxieMobile.CSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "src\RoxieMobile.CSharpCommons.Logging\Logging.csproj", "{3C07BB62-DD4D-462D-9CD3-9C8E93F1F741}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.Serilog", "src\RoxieMobile.CSharpCommons.Logging.Serilog\Logging.Serilog.csproj", "{A88EE9A8-68FD-46E3-9F8F-B040CD37C811}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,10 +62,6 @@ Global
 		{3C07BB62-DD4D-462D-9CD3-9C8E93F1F741}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C07BB62-DD4D-462D-9CD3-9C8E93F1F741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C07BB62-DD4D-462D-9CD3-9C8E93F1F741}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A88EE9A8-68FD-46E3-9F8F-B040CD37C811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A88EE9A8-68FD-46E3-9F8F-B040CD37C811}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A88EE9A8-68FD-46E3-9F8F-B040CD37C811}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A88EE9A8-68FD-46E3-9F8F-B040CD37C811}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
