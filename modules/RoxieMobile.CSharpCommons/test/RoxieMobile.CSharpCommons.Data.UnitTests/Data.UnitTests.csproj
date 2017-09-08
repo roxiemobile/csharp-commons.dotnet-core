@@ -7,14 +7,6 @@
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <!--
-      // ‘dotnet test’ does not work for projects with custom output path
-      // @link https://github.com/Microsoft/vstest/issues/445
-    -->
-    <!--
-    <BaseOutputPath>.build/bin</BaseOutputPath>
-    <BaseIntermediateOutputPath>.build/obj</BaseIntermediateOutputPath>
-    -->
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.Data/Data.csproj" />
@@ -24,5 +16,8 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Directory.Build.props" />
   </ItemGroup>
 </Project>

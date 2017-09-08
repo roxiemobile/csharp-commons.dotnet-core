@@ -12,8 +12,6 @@
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
-    <BaseOutputPath>.build/bin</BaseOutputPath>
-    <BaseIntermediateOutputPath>.build/obj</BaseIntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../RoxieMobile.CSharpCommons.Logging/Logging.csproj" />
@@ -25,6 +23,7 @@
     <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Directory.Build.props" />
     <None Remove="Logging.Serilog.csproj.DotSettings" />
   </ItemGroup>
 </Project>

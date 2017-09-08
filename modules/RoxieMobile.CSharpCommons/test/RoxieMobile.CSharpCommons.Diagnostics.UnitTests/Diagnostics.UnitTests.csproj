@@ -7,14 +7,6 @@
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-    <!--
-      // ‘dotnet test’ does not work for projects with custom output path
-      // @link https://github.com/Microsoft/vstest/issues/445
-    -->
-    <!--
-    <BaseOutputPath>.build/bin</BaseOutputPath>
-    <BaseIntermediateOutputPath>.build/obj</BaseIntermediateOutputPath>
-    -->
   </PropertyGroup>
   <ItemGroup>
     <None Update="Fixtures/**/*">
@@ -35,5 +27,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Diagnostics.UnitTests.csproj.DotSettings" />
+    <None Remove="Directory.Build.props" />
   </ItemGroup>
 </Project>

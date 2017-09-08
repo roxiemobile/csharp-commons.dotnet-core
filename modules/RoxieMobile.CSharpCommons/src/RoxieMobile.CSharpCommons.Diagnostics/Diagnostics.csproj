@@ -12,8 +12,6 @@
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
-    <BaseOutputPath>.build/bin</BaseOutputPath>
-    <BaseIntermediateOutputPath>.build/obj</BaseIntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../RoxieMobile.CSharpCommons.Abstractions/Abstractions.csproj" />
@@ -22,5 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Diagnostics.csproj.DotSettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Directory.Build.props" />
   </ItemGroup>
 </Project>
