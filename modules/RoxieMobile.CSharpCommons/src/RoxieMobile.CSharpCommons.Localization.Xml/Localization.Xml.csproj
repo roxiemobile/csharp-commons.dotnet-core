@@ -1,27 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <AssemblyName>RoxieMobile.CSharpCommons.Data</AssemblyName>
+    <AssemblyName>RoxieMobile.CSharpCommons.Localization.Xml</AssemblyName>
     <VersionPrefix>0.3.0</VersionPrefix>
     <Title>$(AssemblyName)</Title>
-    <Description>A collection of reusable components used to simplify serialization, deserialization and validation operations on data objects.</Description>
+    <Description>Application localization services and default implementation based on XmlResourceManager to load localization resources from XML file(s).</Description>
     <PackageProjectUrl>https://github.com/roxiemobile/csharp-commons.dotnet-core</PackageProjectUrl>
     <Authors>Alexander Bragin</Authors>
     <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
-    <PackageTags>c#;.netcore;commons;data;serialization;validation</PackageTags>
+    <PackageTags>c#;.netcore;commons;localization;xml</PackageTags>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <RuntimeFrameworkVersion>2.0.5</RuntimeFrameworkVersion>
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../RoxieMobile.CSharpCommons.Abstractions/Abstractions.csproj" />
-    <ProjectReference Include="../RoxieMobile.CSharpCommons.DataAnnotations/DataAnnotations.csproj" />
     <ProjectReference Include="../RoxieMobile.CSharpCommons.Diagnostics/Diagnostics.csproj" />
     <ProjectReference Include="../RoxieMobile.CSharpCommons.Logging/Logging.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="2.0.1" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Directory.Build.props" />
