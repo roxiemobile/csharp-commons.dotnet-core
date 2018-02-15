@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>RoxieMobile.CSharpCommons.Localization.Xml</AssemblyName>
-    <VersionPrefix>0.3.0</VersionPrefix>
+    <VersionPrefix>0.4.0</VersionPrefix>
     <Title>$(AssemblyName)</Title>
-    <Description>Application localization services and default implementation based on XmlResourceManager to load localization strings from XML file(s).</Description>
+    <Description>Application localization services and default implementation based on XmlResourceManager to load localization strings from XML files.</Description>
     <PackageProjectUrl>https://github.com/roxiemobile/csharp-commons.dotnet-core</PackageProjectUrl>
     <Authors>Alexander Bragin</Authors>
     <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
