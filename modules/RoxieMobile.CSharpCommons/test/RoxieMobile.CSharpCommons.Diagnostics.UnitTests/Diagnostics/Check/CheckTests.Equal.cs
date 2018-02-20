@@ -11,13 +11,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void Equal(string method)
         {
             const string value = "value";
-            const string nilString = null;
+            const string nilValue = null;
 
 
             CheckThrowsException(method,
                 () => Check.Equal(1, 2));
             CheckThrowsException(method,
-                () => Check.Equal(value, nilString));
+                () => Check.Equal(value, nilValue));
 
             CheckNotThrowsException(method,
                 () => Check.Equal(2, 2));

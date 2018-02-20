@@ -11,7 +11,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void NotEqual(string method)
         {
             const string value = "value";
-            const string nilString = null;
+            const string nilValue = null;
 
 
             GuardThrowsError(method,
@@ -22,7 +22,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             GuardNotThrowsError(method,
                 () => Guard.NotEqual(1, 2));
             GuardNotThrowsError(method,
-                () => Guard.NotEqual(value, nilString));
+                () => Guard.NotEqual(value, nilValue));
         }
     }
 }

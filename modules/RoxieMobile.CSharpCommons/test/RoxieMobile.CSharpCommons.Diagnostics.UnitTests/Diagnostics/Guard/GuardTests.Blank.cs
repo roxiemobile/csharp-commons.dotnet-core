@@ -11,20 +11,20 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void Blank(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
-            const string whitespaceString = " \t\r\n";
+            const string nilValue = null;
+            const string emptyValue = "";
+            const string whitespaceValue = " \t\r\n";
 
 
             GuardThrowsError(method,
                 () => Guard.Blank(value));
 
             GuardNotThrowsError(method,
-                () => Guard.Blank(nilString));
+                () => Guard.Blank(nilValue));
             GuardNotThrowsError(method,
-                () => Guard.Blank(emptyString));
+                () => Guard.Blank(emptyValue));
             GuardNotThrowsError(method,
-                () => Guard.Blank(whitespaceString));
+                () => Guard.Blank(whitespaceValue));
         }
     }
 }

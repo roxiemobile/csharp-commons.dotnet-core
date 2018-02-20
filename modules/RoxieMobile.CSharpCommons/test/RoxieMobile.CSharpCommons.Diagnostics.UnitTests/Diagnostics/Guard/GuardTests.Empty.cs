@@ -17,21 +17,22 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void Empty(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
+            const string otherValue = "otherValue";
+            const string nilValue = null;
+            const string emptyValue = "";
 
 
             GuardThrowsError(method,
                 () => Guard.Empty(value));
 
             GuardNotThrowsError(method,
-                () => Guard.Empty(nilString));
+                () => Guard.Empty(nilValue));
             GuardNotThrowsError(method,
-                () => Guard.Empty(emptyString));
+                () => Guard.Empty(emptyValue));
 
             // --
 
-            string[] array = ToArray("value", "otherValue");
+            string[] array = ToArray(value, otherValue);
             string[] nilArray = null;
             string[] emptyArray = {};
 
@@ -45,7 +46,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 
             // --
 
-            List<string> list = ToArray("value", "otherValue").ToList();
+            List<string> list = ToArray(value, otherValue).ToList();
             List<string> nilList = null;
             List<string> emptyList = new List<string>();
 

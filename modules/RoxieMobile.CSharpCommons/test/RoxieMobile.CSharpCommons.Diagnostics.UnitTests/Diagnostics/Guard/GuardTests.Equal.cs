@@ -11,13 +11,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void Equal(string method)
         {
             const string value = "value";
-            const string nilString = null;
+            const string nilValue = null;
 
 
             GuardThrowsError(method,
                 () => Guard.Equal(1, 2));
             GuardThrowsError(method,
-                () => Guard.Equal(value, nilString));
+                () => Guard.Equal(value, nilValue));
 
             GuardNotThrowsError(method,
                 () => Guard.Equal(2, 2));

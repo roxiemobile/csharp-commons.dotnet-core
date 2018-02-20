@@ -15,19 +15,19 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllNotEmpty(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
+            const string otherValue = "otherValue";
+            const string nilValue = null;
+            const string emptyValue = "";
 
-            const string otherString = "otherValue";
-            string[] array = ToArray(value, otherString);
+            string[] array = ToArray(value, otherValue);
             string[] nilArray = null;
             string[] emptyArray = {};
 
 
             GuardThrowsError(method,
-                () => Guard.AllNotEmpty(ToArray(value, nilString)));
+                () => Guard.AllNotEmpty(ToArray(value, nilValue)));
             GuardThrowsError(method,
-                () => Guard.AllNotEmpty(ToArray(value, emptyString)));
+                () => Guard.AllNotEmpty(ToArray(value, emptyValue)));
 
             GuardNotThrowsError(method,
                 () => Guard.AllNotEmpty(array));

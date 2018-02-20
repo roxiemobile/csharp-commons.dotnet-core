@@ -11,17 +11,17 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void NotBlank(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
-            const string whitespaceString = " \t\r\n";
+            const string nilValue = null;
+            const string emptyValue = "";
+            const string whitespaceValue = " \t\r\n";
 
 
             CheckThrowsException(method,
-                () => Check.NotBlank(nilString));
+                () => Check.NotBlank(nilValue));
             CheckThrowsException(method,
-                () => Check.NotBlank(emptyString));
+                () => Check.NotBlank(emptyValue));
             CheckThrowsException(method,
-                () => Check.NotBlank(whitespaceString));
+                () => Check.NotBlank(whitespaceValue));
 
             CheckNotThrowsException(method,
                 () => Check.NotBlank(value));

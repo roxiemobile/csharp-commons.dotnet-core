@@ -15,10 +15,10 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllEmpty(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
+            const string nilValue = null;
+            const string emptyValue = "";
 
-            string[] array = ToArray(nilString, emptyString);
+            string[] array = ToArray(nilValue, emptyValue);
             string[] nilArray = null;
             string[] emptyArray = {};
 
@@ -26,9 +26,9 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             CheckThrowsException(method,
                 () => Check.AllEmpty(ToArray(value)));
             CheckThrowsException(method,
-                () => Check.AllEmpty(ToArray(nilString, value)));
+                () => Check.AllEmpty(ToArray(nilValue, value)));
             CheckThrowsException(method,
-                () => Check.AllEmpty(ToArray(emptyString, value)));
+                () => Check.AllEmpty(ToArray(emptyValue, value)));
 
             CheckNotThrowsException(method,
                 () => Check.AllEmpty(array));

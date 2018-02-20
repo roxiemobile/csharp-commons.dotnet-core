@@ -11,13 +11,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void NotSame(string method)
         {
             const string value = "value";
-            const string otherString = "otherValue";
+            const string otherValue = "otherValue";
 
             GuardThrowsError(method,
                 () => Guard.NotSame(value, value));
 
             GuardNotThrowsError(method,
-                () => Guard.NotSame(value, otherString));
+                () => Guard.NotSame(value, otherValue));
         }
     }
 }

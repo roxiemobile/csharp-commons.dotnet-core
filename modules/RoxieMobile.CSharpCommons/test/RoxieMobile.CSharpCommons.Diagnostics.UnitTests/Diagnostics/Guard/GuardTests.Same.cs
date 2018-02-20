@@ -11,10 +11,10 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void Same(string method)
         {
             const string value = "value";
-            const string otherString = "otherValue";
+            const string otherValue = "otherValue";
 
             GuardThrowsError(method,
-                () => Guard.Same(value, otherString));
+                () => Guard.Same(value, otherValue));
 
             GuardNotThrowsError(method,
                 () => Guard.Same(value, value));

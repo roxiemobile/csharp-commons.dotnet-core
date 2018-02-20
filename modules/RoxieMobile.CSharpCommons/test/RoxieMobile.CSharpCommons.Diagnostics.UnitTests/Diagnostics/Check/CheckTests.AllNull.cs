@@ -17,20 +17,20 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllNull(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
+            const string nilValue = null;
+            const string emptyValue = "";
 
             string[] nilArray = null;
             string[] emptyArray = {};
 
 
             CheckThrowsException($"{method}_Array",
-                () => Check.AllNull(ToArray(nilString, value)));
+                () => Check.AllNull(ToArray(nilValue, value)));
             CheckThrowsException($"{method}_Array",
-                () => Check.AllNull(ToArray(nilString, emptyString)));
+                () => Check.AllNull(ToArray(nilValue, emptyValue)));
 
             CheckNotThrowsException($"{method}_Array",
-                () => Check.AllNull(ToArray(nilString, nilString)));
+                () => Check.AllNull(ToArray(nilValue, nilValue)));
             CheckNotThrowsException($"{method}_Array",
                 () => Check.AllNull(nilArray));
             CheckNotThrowsException($"{method}_Array",
@@ -42,12 +42,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             List<string> emptyList = new List<string>();
 
             CheckThrowsException($"{method}_List",
-                () => Check.AllNotNull(ToArray(value, nilString).ToList()));
+                () => Check.AllNotNull(ToArray(value, nilValue).ToList()));
             CheckThrowsException($"{method}_List",
-                () => Check.AllNotNull(ToArray(emptyString, nilString).ToList()));
+                () => Check.AllNotNull(ToArray(emptyValue, nilValue).ToList()));
 
             CheckNotThrowsException($"{method}_List",
-                () => Check.AllNull(ToArray(nilString, nilString).ToList()));
+                () => Check.AllNull(ToArray(nilValue, nilValue).ToList()));
             CheckNotThrowsException($"{method}_List",
                 () => Check.Empty(nilList));
             CheckNotThrowsException($"{method}_List",

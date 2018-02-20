@@ -15,24 +15,24 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllNotBlank(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
-            const string whitespaceString = " \t\r\n";
+            const string otherValue = "otherValue";
+            const string nilValue = null;
+            const string emptyValue = "";
+            const string whitespaceValue = " \t\r\n";
 
-            const string otherString = "otherValue";
-            string[] array = ToArray(value, otherString);
+            string[] array = ToArray(value, otherValue);
             string[] nilArray = null;
             string[] emptyArray = {};
 
 
             CheckThrowsException(method,
-                () => Check.AllNotBlank(ToArray(nilString)));
+                () => Check.AllNotBlank(ToArray(nilValue)));
             CheckThrowsException(method,
-                () => Check.AllNotBlank(ToArray(emptyString)));
+                () => Check.AllNotBlank(ToArray(emptyValue)));
             CheckThrowsException(method,
-                () => Check.AllNotBlank(ToArray(whitespaceString)));
+                () => Check.AllNotBlank(ToArray(whitespaceValue)));
             CheckThrowsException(method,
-                () => Check.AllNotBlank(ToArray(value, whitespaceString)));
+                () => Check.AllNotBlank(ToArray(value, whitespaceValue)));
 
             CheckNotThrowsException(method,
                 () => Check.AllNotBlank(array));

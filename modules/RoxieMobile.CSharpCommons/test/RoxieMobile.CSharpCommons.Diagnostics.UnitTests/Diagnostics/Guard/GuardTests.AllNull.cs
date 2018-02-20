@@ -17,20 +17,20 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllNull(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
+            const string nilValue = null;
+            const string emptyValue = "";
 
             string[] nilArray = null;
             string[] emptyArray = {};
 
 
             GuardThrowsError($"{method}_Array",
-                () => Guard.AllNull(ToArray(nilString, value)));
+                () => Guard.AllNull(ToArray(nilValue, value)));
             GuardThrowsError($"{method}_Array",
-                () => Guard.AllNull(ToArray(nilString, emptyString)));
+                () => Guard.AllNull(ToArray(nilValue, emptyValue)));
 
             GuardNotThrowsError($"{method}_Array",
-                () => Guard.AllNull(ToArray(nilString, nilString)));
+                () => Guard.AllNull(ToArray(nilValue, nilValue)));
             GuardNotThrowsError($"{method}_Array",
                 () => Guard.AllNull(nilArray));
             GuardNotThrowsError($"{method}_Array",
@@ -42,12 +42,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             List<string> emptyList = new List<string>();
 
             GuardThrowsError($"{method}_List",
-                () => Guard.AllNotNull(ToArray(value, nilString).ToList()));
+                () => Guard.AllNotNull(ToArray(value, nilValue).ToList()));
             GuardThrowsError($"{method}_List",
-                () => Guard.AllNotNull(ToArray(emptyString, nilString).ToList()));
+                () => Guard.AllNotNull(ToArray(emptyValue, nilValue).ToList()));
 
             GuardNotThrowsError($"{method}_List",
-                () => Guard.AllNull(ToArray(nilString, nilString).ToList()));
+                () => Guard.AllNull(ToArray(nilValue, nilValue).ToList()));
             GuardNotThrowsError($"{method}_List",
                 () => Guard.Empty(nilList));
             GuardNotThrowsError($"{method}_List",

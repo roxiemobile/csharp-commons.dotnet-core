@@ -15,11 +15,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllBlank(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
-            const string whitespaceString = " \t\r\n";
+            const string nilValue = null;
+            const string emptyValue = "";
+            const string whitespaceValue = " \t\r\n";
 
-            string[] array = ToArray(nilString, emptyString, whitespaceString);
+            string[] array = ToArray(nilValue, emptyValue, whitespaceValue);
             string[] nilArray = null;
             string[] emptyArray = {};
 
@@ -27,11 +27,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             GuardThrowsError(method,
                 () => Guard.AllBlank(ToArray(value)));
             GuardThrowsError(method,
-                () => Guard.AllBlank(ToArray(nilString, value)));
+                () => Guard.AllBlank(ToArray(nilValue, value)));
             GuardThrowsError(method,
-                () => Guard.AllBlank(ToArray(emptyString, value)));
+                () => Guard.AllBlank(ToArray(emptyValue, value)));
             GuardThrowsError(method,
-                () => Guard.AllBlank(ToArray(whitespaceString, value)));
+                () => Guard.AllBlank(ToArray(whitespaceValue, value)));
 
             GuardNotThrowsError(method,
                 () => Guard.AllBlank(array));

@@ -17,18 +17,18 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllNotNull(string method)
         {
             const string value = "value";
-            const string nilString = null;
-            const string emptyString = "";
+            const string nilValue = null;
+            const string emptyValue = "";
 
-            string[] array = ToArray(value, emptyString);
+            string[] array = ToArray(value, emptyValue);
             string[] nilArray = null;
             string[] emptyArray = {};
 
 
             CheckThrowsException($"{method}_Array",
-                () => Check.AllNotNull(ToArray(value, nilString)));
+                () => Check.AllNotNull(ToArray(value, nilValue)));
             CheckThrowsException($"{method}_Array",
-                () => Check.AllNotNull(ToArray(emptyString, nilString)));
+                () => Check.AllNotNull(ToArray(emptyValue, nilValue)));
 
             CheckNotThrowsException($"{method}_Array",
                 () => Check.AllNotNull(array));
@@ -39,14 +39,14 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 
             // --
 
-            List<string> list = ToArray(value, emptyString).ToList();
+            List<string> list = ToArray(value, emptyValue).ToList();
             List<string> nilList = null;
             List<string> emptyList = new List<string>();
 
             CheckThrowsException($"{method}_List",
-                () => Check.AllNotNull(ToArray(value, nilString).ToList()));
+                () => Check.AllNotNull(ToArray(value, nilValue).ToList()));
             CheckThrowsException($"{method}_List",
-                () => Check.AllNotNull(ToArray(emptyString, nilString).ToList()));
+                () => Check.AllNotNull(ToArray(emptyValue, nilValue).ToList()));
 
             CheckNotThrowsException($"{method}_List",
                 () => Check.AllNotNull(list));
