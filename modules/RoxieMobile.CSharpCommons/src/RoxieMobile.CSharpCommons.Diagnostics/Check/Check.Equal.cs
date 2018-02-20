@@ -12,8 +12,8 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <summary>
         /// Checks that two objects are equal. If <c>expected</c> and <c>actual</c> are <c>null</c>, they are considered equal. 
         /// </summary>
-        /// <param name="expected">Expected value.</param>
-        /// <param name="actual">Actual value.</param>
+        /// <param name="expected">Expected object to check.</param>
+        /// <param name="actual">The object to check against <see cref="expected"/>.</param>
         /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
         /// <exception cref="CheckException" />
         public static void Equal(object expected, object actual, string message = null)
@@ -26,8 +26,8 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <summary>
         /// Checks that two objects are equal. If <c>expected</c> and <c>actual</c> are <c>null</c>, they are considered equal. 
         /// </summary>
-        /// <param name="expected">Expected value.</param>
-        /// <param name="actual">Actual value.</param>
+        /// <param name="expected">Expected object to check.</param>
+        /// <param name="actual">The object to check against <see cref="expected"/>.</param>
         /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="CheckException" />

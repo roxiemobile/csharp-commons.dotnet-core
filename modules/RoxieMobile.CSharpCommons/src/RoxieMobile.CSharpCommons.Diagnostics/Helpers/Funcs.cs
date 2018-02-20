@@ -26,12 +26,15 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         public static Func<string> Empty(string name) =>
             () => $"‘{name}’ is empty";
 
-// Guard.Equal.cs
+        // Guard.Equal.cs
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> Equal(string name, string otherName) =>
+            () => $"‘{name}’ and ‘{otherName}’ is equal";
 
         // Guard.False.cs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Func<string> False() =>
-            () => $"Condition is FALSE";
+            () => "Condition is FALSE";
 
         // Guard.GreaterThan.cs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -63,7 +66,10 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         public static Func<string> NotEmpty(string name) =>
             () => $"‘{name}’ is not empty";
 
-// Guard.NotEqual.cs
+        // Guard.NotEqual.cs
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> NotEqual(string name, string otherName) =>
+            () => $"‘{name}’ and ‘{otherName}’ is not equal";
 
         // Guard.NotNull.cs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -106,7 +112,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         // Guard.True.cs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Func<string> True() =>
-            () => $"Condition is TRUE";
+            () => "Condition is TRUE";
 
         // Guard.Valid.cs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

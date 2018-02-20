@@ -11,6 +11,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 {
     /// <summary>
     /// A set of methods useful for validating objects states. Only failed checks are throws exceptions.
+    /// These methods can be used directly: `Guard.isTrue(...)`.
     /// </summary>
     [DebuggerStepThrough]
     public static partial class Guard
