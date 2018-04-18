@@ -9,7 +9,7 @@
     <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
     <PackageTags>c#;.netcore;commons;data;serialization;validation</PackageTags>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <RuntimeFrameworkVersion>2.0.5</RuntimeFrameworkVersion>
+    <RuntimeFrameworkVersion>2.0.7</RuntimeFrameworkVersion>
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <ProjectReference Include="../RoxieMobile.CSharpCommons.Logging/Logging.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
