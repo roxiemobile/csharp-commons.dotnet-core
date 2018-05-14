@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>RoxieMobile.CSharpCommons.DataAnnotations</AssemblyName>
-    <VersionPrefix>0.4.1</VersionPrefix>
+    <VersionPrefix>0.4.2</VersionPrefix>
     <Title>$(AssemblyName)</Title>
     <Description>A collection of validation attributes that can be used in any .NET Core project to supplement the existing Data Annotations attributes.</Description>
     <PackageProjectUrl>https://github.com/roxiemobile/csharp-commons.dotnet-core</PackageProjectUrl>
