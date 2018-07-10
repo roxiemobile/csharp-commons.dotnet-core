@@ -48,7 +48,7 @@ namespace RoxieMobile.CSharpCommons.Extensions
         /// <returns>An object of type <typeparamref name="TEnum"/> whose value is represented by <paramref name="source"/>.</returns>
         /// <exception cref="ArgumentNullException">Thrown when the <paramref name="source"/> is <c>null</c>.</exception>
         /// <exception cref="ArgumentException">Thrown when the <paramref name="source"/> is a name, but not one of the named constants defined for the enumeration.</exception>
-        public static TEnum ToEnumValue<TEnum>(this string source)
+        public static TEnum ToEnum<TEnum>(this string source)
         {
             if (source == null) {
                 throw new ArgumentNullException(nameof(source));
