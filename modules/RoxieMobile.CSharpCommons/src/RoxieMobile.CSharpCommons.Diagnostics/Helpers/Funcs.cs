@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics
 {
-    public static class Funcs
+    public static partial class Funcs
     {
 // Guard.AllBlank.cs
 // Guard.AllEmpty.cs
@@ -118,5 +118,32 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Func<string> Valid(string name) =>
             () => $"‘{name}’ is valid";
+    }
+
+    public static partial class Funcs
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> LengthIsGreaterThan<T>(string name, T value) =>
+            () => "Length of " + GreaterThan(name, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> LengthIsGreaterThanOrEqualTo<T>(string name, T value) =>
+            () => "Length of " + GreaterThanOrEqualTo(name, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> LengthIsLessThan<T>(string name, T value) =>
+            () => "Length of " + LessThan(name, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> LengthIsLessThanOrEqualTo<T>(string name, T value) =>
+            () => "Length of " + LessThanOrEqualTo(name, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> LengthIsEqual<T>(string name, T value) =>
+            () => $"Length of ‘{name}’ is equal to ‘{value}’";
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> LengthIsNotEqual<T>(string name, T value) =>
+            () => $"Length of ‘{name}’ is not equal to ‘{value}’";
     }
 }
