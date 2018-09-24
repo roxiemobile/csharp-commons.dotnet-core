@@ -14,10 +14,10 @@
     <RootNamespace>$(AssemblyName)</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../RoxieMobile.CSharpCommons.Abstractions/Abstractions.csproj" />
-    <ProjectReference Include="../RoxieMobile.CSharpCommons.DataAnnotations/DataAnnotations.csproj" />
-    <ProjectReference Include="../RoxieMobile.CSharpCommons.Diagnostics/Diagnostics.csproj" />
-    <ProjectReference Include="../RoxieMobile.CSharpCommons.Logging/Logging.csproj" />
+    <ProjectReference Include="../Abstractions/Abstractions.csproj" />
+    <ProjectReference Include="../DataAnnotations/DataAnnotations.csproj" />
+    <ProjectReference Include="../Diagnostics/Diagnostics.csproj" />
+    <ProjectReference Include="../Logging/Logging.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />

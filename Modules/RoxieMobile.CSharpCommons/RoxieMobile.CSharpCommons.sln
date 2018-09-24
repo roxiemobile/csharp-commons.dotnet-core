@@ -2,25 +2,25 @@
 # Visual Studio 15
 VisualStudioVersion = 15.0.26114.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions", "src\RoxieMobile.CSharpCommons.Abstractions\Abstractions.csproj", "{13F43634-716F-44EC-AA4C-4AC4698B121B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions", "src\Abstractions\Abstractions.csproj", "{13F43634-716F-44EC-AA4C-4AC4698B121B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "src\RoxieMobile.CSharpCommons.Data\Data.csproj", "{6E384843-81FB-4A04-8400-C4291BA7781D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "src\Data\Data.csproj", "{6E384843-81FB-4A04-8400-C4291BA7781D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.UnitTests", "test\RoxieMobile.CSharpCommons.Data.UnitTests\Data.UnitTests.csproj", "{1B90E497-9F48-480E-80BA-2A5F78076AEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.UnitTests", "test\Data.UnitTests\Data.UnitTests.csproj", "{1B90E497-9F48-480E-80BA-2A5F78076AEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAnnotations", "src\RoxieMobile.CSharpCommons.DataAnnotations\DataAnnotations.csproj", "{2ABF7833-AC48-4FF6-B92F-3A55B1C80BB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAnnotations", "src\DataAnnotations\DataAnnotations.csproj", "{2ABF7833-AC48-4FF6-B92F-3A55B1C80BB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diagnostics", "src\RoxieMobile.CSharpCommons.Diagnostics\Diagnostics.csproj", "{303BB99A-F87A-4CD2-8D03-A3D922C0E11E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diagnostics", "src\Diagnostics\Diagnostics.csproj", "{303BB99A-F87A-4CD2-8D03-A3D922C0E11E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diagnostics.UnitTests", "test\RoxieMobile.CSharpCommons.Diagnostics.UnitTests\Diagnostics.UnitTests.csproj", "{839D2960-33BD-49E3-810F-7376415710DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diagnostics.UnitTests", "test\Diagnostics.UnitTests\Diagnostics.UnitTests.csproj", "{839D2960-33BD-49E3-810F-7376415710DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "src\RoxieMobile.CSharpCommons.Extensions\Extensions.csproj", "{EF3BE737-61DC-4308-8E5A-8B919E829A0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "src\Extensions\Extensions.csproj", "{EF3BE737-61DC-4308-8E5A-8B919E829A0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lang", "src\RoxieMobile.CSharpCommons.Lang\Lang.csproj", "{DCE954B4-4AA3-48F7-A124-DCD2C55E41E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lang", "src\Lang\Lang.csproj", "{DCE954B4-4AA3-48F7-A124-DCD2C55E41E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localization.Xml", "src\RoxieMobile.CSharpCommons.Localization.Xml\Localization.Xml.csproj", "{5AF3E662-755F-41E6-B739-C083ECC00E25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localization.Xml", "src\Localization.Xml\Localization.Xml.csproj", "{5AF3E662-755F-41E6-B739-C083ECC00E25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "src\RoxieMobile.CSharpCommons.Logging\Logging.csproj", "{3C07BB62-DD4D-462D-9CD3-9C8E93F1F741}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "src\Logging\Logging.csproj", "{3C07BB62-DD4D-462D-9CD3-9C8E93F1F741}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

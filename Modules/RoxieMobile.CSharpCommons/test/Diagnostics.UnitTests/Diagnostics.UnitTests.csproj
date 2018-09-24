@@ -14,10 +14,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.Data/Data.csproj" />
-    <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.DataAnnotations/DataAnnotations.csproj" />
-    <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.Diagnostics/Diagnostics.csproj" />
-    <ProjectReference Include="../../src/RoxieMobile.CSharpCommons.Extensions/Extensions.csproj" />
+    <ProjectReference Include="../../src/Data/Data.csproj" />
+    <ProjectReference Include="../../src/DataAnnotations/DataAnnotations.csproj" />
+    <ProjectReference Include="../../src/Diagnostics/Diagnostics.csproj" />
+    <ProjectReference Include="../../src/Extensions/Extensions.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
