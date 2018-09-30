@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Models.Abstractions;
-using static RoxieMobile.CSharpCommons.Extensions.ArrayUtils;
+using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Models
 {

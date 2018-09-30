@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
-using static RoxieMobile.CSharpCommons.Extensions.ArrayUtils;
+using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 {

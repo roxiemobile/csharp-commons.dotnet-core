@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using RoxieMobile.CSharpCommons.Abstractions.Models;
 using RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Models;
 using Xunit;
-using static RoxieMobile.CSharpCommons.Extensions.ArrayUtils;
+using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 {

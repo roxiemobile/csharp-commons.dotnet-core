@@ -1,6 +1,6 @@
-﻿namespace RoxieMobile.CSharpCommons.Extensions
+namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers
 {
-    public static class ArrayUtils
+    public static class Arrays
     {
         /// <summary>
         /// Create a type-safe generic array.
