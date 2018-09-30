@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>RoxieMobile.CSharpCommons.Cryptography</AssemblyName>
+    <VersionPrefix>0.5.3</VersionPrefix>
+    <Title>$(AssemblyName)</Title>
+    <Description>Provides modern cryptographic algorithm implementations for .NET Core.</Description>
+    <PackageProjectUrl>https://github.com/roxiemobile/csharp-commons.dotnet-core</PackageProjectUrl>
+    <Authors>Alexander Bragin</Authors>
+    <Copyright>© Roxie Mobile Ltd. All rights reserved.</Copyright>
+    <PackageTags>c#;.netcore;commons;cryptography</PackageTags>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RuntimeFrameworkVersion>2.1.4</RuntimeFrameworkVersion>
+    <PackageId>$(AssemblyName)</PackageId>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Diagnostics/Diagnostics.csproj" />
+    <ProjectReference Include="../Extensions/Extensions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Directory.Build.props" />
+  </ItemGroup>
+</Project>
