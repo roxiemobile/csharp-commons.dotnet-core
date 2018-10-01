@@ -9,6 +9,8 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Algorithms
     [SuppressMessage("ReSharper", "RedundantExplicitArrayCreation")]
     public sealed class HighwayHashTests
     {
+// MARK: - Tests
+
         [Fact]
         private void TestHighwayHash64()
         {

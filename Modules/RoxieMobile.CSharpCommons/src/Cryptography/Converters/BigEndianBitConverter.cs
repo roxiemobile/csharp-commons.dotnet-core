@@ -143,5 +143,55 @@ namespace RoxieMobile.CSharpCommons.Cryptography.Converters
             }
             return bs;
         }
+
+// MARK: - Methods: float
+
+        /// <summary>
+        /// Returns the specified float value as an array of bytes in big-indian order.
+        /// </summary>
+        /// <param name="value">The number to convert.</param>
+        /// <returns>An array of bytes with length 4.</returns>
+        public static byte[] ToByteArray(float value) =>
+            BitConverter.IsLittleEndian ? Pack.UInt32_To_BE(SingleToUInt32(value)) : BitConverter.GetBytes(value);
+
+        [Obsolete(Messages.WriteADescription)]
+        public static byte[] ToByteArray(float[] ns)
+        {
+            const short size = sizeof(float);
+            var bs = new byte[size * ns.Length];
+            for (short idx = 0, offset = 0; idx < ns.Length; idx++, offset += size) {
+                Array.Copy(ToByteArray(ns[idx]), 0, bs, offset, size);
+            }
+            return bs;
+        }
+
+// MARK: - Methods: double
+
+        /// <summary>
+        /// Returns the specified double value as an array of bytes in big-indian order.
+        /// </summary>
+        /// <param name="value">The number to convert.</param>
+        /// <returns>An array of bytes with length 8.</returns>
+        public static byte[] ToByteArray(double value) =>
+            BitConverter.IsLittleEndian ? Pack.UInt64_To_BE(DoubleToUInt64(value)) : BitConverter.GetBytes(value);
+
+        [Obsolete(Messages.WriteADescription)]
+        public static byte[] ToByteArray(double[] ns)
+        {
+            const short size = sizeof(double);
+            var bs = new byte[size * ns.Length];
+            for (short idx = 0, offset = 0; idx < ns.Length; idx++, offset += size) {
+                Array.Copy(ToByteArray(ns[idx]), 0, bs, offset, size);
+            }
+            return bs;
+        }
+
+// MARK: - Private Methods
+
+        private static unsafe uint SingleToUInt32(float value) =>
+            *((uint*) &value);
+
+        private static unsafe ulong DoubleToUInt64(double value) =>
+            *((ulong*) &value);
     }
 }
