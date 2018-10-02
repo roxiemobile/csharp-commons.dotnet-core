@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using RoxieMobile.CSharpCommons.Cryptography.Converters;
 using Xunit;
 
 namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
 {
+    [SuppressMessage("ReSharper", "RedundantCast")]
     public sealed class BigEndianBitConverterTests
     {
 // MARK: - Tests
@@ -15,13 +17,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const long value = (long) 0x004F003F002F001F;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToInt64(arr_v0);
             var val_v1 = BigEndianBitConverter.ToInt64(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToInt64(arr_v2);
             var val_v3 = BigEndianBitConverter.ToInt64(arr_v2, sizeof(long));
             Assert.Equal(val_v2, value);
@@ -34,13 +38,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const ulong value = (ulong) 0x004F003F002F001F;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToUInt64(arr_v0);
             var val_v1 = BigEndianBitConverter.ToUInt64(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToUInt64(arr_v2);
             var val_v3 = BigEndianBitConverter.ToUInt64(arr_v2, sizeof(ulong));
             Assert.Equal(val_v2, value);
@@ -53,13 +59,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const int value = (int) 0x002F001F;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToInt32(arr_v0);
             var val_v1 = BigEndianBitConverter.ToInt32(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToInt32(arr_v2);
             var val_v3 = BigEndianBitConverter.ToInt32(arr_v2, sizeof(int));
             Assert.Equal(val_v2, value);
@@ -72,13 +80,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const uint value = (uint) 0x002F001F;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToUInt32(arr_v0);
             var val_v1 = BigEndianBitConverter.ToUInt32(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToUInt32(arr_v2);
             var val_v3 = BigEndianBitConverter.ToUInt32(arr_v2, sizeof(uint));
             Assert.Equal(val_v2, value);
@@ -91,13 +101,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const short value = (short) 0x001F;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToInt16(arr_v0);
             var val_v1 = BigEndianBitConverter.ToInt16(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToInt16(arr_v2);
             var val_v3 = BigEndianBitConverter.ToInt16(arr_v2, sizeof(short));
             Assert.Equal(val_v2, value);
@@ -110,13 +122,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const ushort value = (ushort) 0x001F;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToUInt16(arr_v0);
             var val_v1 = BigEndianBitConverter.ToUInt16(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToUInt16(arr_v2);
             var val_v3 = BigEndianBitConverter.ToUInt16(arr_v2, sizeof(ushort));
             Assert.Equal(val_v2, value);
@@ -129,13 +143,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const char value = (char) 0x001F;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToChar(arr_v0);
             var val_v1 = BigEndianBitConverter.ToChar(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToChar(arr_v2);
             var val_v3 = BigEndianBitConverter.ToChar(arr_v2, sizeof(char));
             Assert.Equal(val_v2, value);
@@ -148,13 +164,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const bool value = true;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToBoolean(arr_v0);
             var val_v1 = BigEndianBitConverter.ToBoolean(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToBoolean(arr_v2);
             var val_v3 = BigEndianBitConverter.ToBoolean(arr_v2, sizeof(byte));
             Assert.Equal(val_v2, value);
@@ -167,13 +185,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const float value = 0x004F003F002F001F;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToSingle(arr_v0);
             var val_v1 = BigEndianBitConverter.ToSingle(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToSingle(arr_v2);
             var val_v3 = BigEndianBitConverter.ToSingle(arr_v2, sizeof(float));
             Assert.Equal(val_v2, value);
@@ -186,13 +206,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const double value = 0x004F003F002F001F;
 
             var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            var arr_v1 = BigEndianBitConverter.GetBytes(value);
             Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
+            var val_v0 = BitConverter.ToDouble(arr_v0);
             var val_v1 = BigEndianBitConverter.ToDouble(arr_v1);
+            Assert.Equal(val_v0, value);
             Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToDouble(arr_v2);
             var val_v3 = BigEndianBitConverter.ToDouble(arr_v2, sizeof(double));
             Assert.Equal(val_v2, value);
@@ -205,14 +227,15 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             const decimal value = 0x004F003F002F001F;
 
 //            var arr_v0 = BitConverter.GetBytes(value);
-//            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+//            var arr_v1 = BigEndianBitConverter.GetBytes(value);
 //            Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
 
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
-            var val_v1 = BigEndianBitConverter.ToDecimal(arr_v1);
-            Assert.Equal(val_v1, value);
+//            var val_v0 = BitConverter.ToDecimal(arr_v0);
+//            var val_v1 = BigEndianBitConverter.ToDecimal(arr_v1);
+//            Assert.Equal(val_v0, value);
+//            Assert.Equal(val_v1, value);
 
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var arr_v2 = BigEndianBitConverter.GetBytes(new[] { value, value });
             var val_v2 = BigEndianBitConverter.ToDecimal(arr_v2);
             var val_v3 = BigEndianBitConverter.ToDecimal(arr_v2, sizeof(decimal));
             Assert.Equal(val_v2, value);
