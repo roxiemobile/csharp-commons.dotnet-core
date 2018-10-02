@@ -277,7 +277,7 @@ namespace RoxieMobile.CSharpCommons.Cryptography.Algorithms
             if (hashType == HashType.SipHash64) {
 
                 var hash = (v0 ^ v1 ^ v2 ^ v3);
-                result = BigEndianBitConverter.ToByteArray(hash);
+                result = BigEndianBitConverter.GetBytes(hash);
             }
             else {
 
@@ -352,7 +352,7 @@ namespace RoxieMobile.CSharpCommons.Cryptography.Algorithms
                 }
 
                 var hashLo = (v0 ^ v1 ^ v2 ^ v3);
-                result = BigEndianBitConverter.ToByteArray(new[] { hashHi, hashLo });
+                result = BigEndianBitConverter.GetBytes(new[] { hashHi, hashLo });
             }
 
             // Done

@@ -237,21 +237,21 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Algorithms
 
         private static void CheckHash64(byte[] key, byte[] data, int length, ulong expected)
         {
-            var expectedString = ToByteArray(expected).ToUpperHexString();
+            var expectedString = GetBytes(expected).ToUpperHexString();
             var hashString = HighwayHash.Hash64(key, data, 0, length).ToUpperHexString();
             Assert.Equal(expectedString, hashString);
         }
 
         private static void CheckHash128(byte[] key, byte[] data, int length, ulong[] expected)
         {
-            var expectedString = ToByteArray(expected).ToUpperHexString();
+            var expectedString = GetBytes(expected).ToUpperHexString();
             var hashString = HighwayHash.Hash128(key, data, 0, length).ToUpperHexString();
             Assert.Equal(expectedString, hashString);
         }
 
         private static void CheckHash256(byte[] key, byte[] data, int length, ulong[] expected)
         {
-            var expectedString = ToByteArray(expected).ToUpperHexString();
+            var expectedString = GetBytes(expected).ToUpperHexString();
             var hashString = HighwayHash.Hash256(key, data, 0, length).ToUpperHexString();
             Assert.Equal(expectedString, hashString);
         }

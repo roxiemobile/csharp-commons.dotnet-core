@@ -24,6 +24,9 @@
     <ProjectReference Include="../Extensions/Extensions.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.2" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Directory.Build.props" />
   </ItemGroup>
 </Project>

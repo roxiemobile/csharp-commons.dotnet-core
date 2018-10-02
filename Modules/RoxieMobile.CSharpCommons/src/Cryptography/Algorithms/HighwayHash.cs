@@ -218,7 +218,7 @@ namespace RoxieMobile.CSharpCommons.Cryptography.Algorithms
             _done = true;
 
             var hash = (_v0[0] + _v1[0] + _mul0[0] + _mul1[0]);
-            return BigEndianBitConverter.ToByteArray(hash);
+            return BigEndianBitConverter.GetBytes(hash);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace RoxieMobile.CSharpCommons.Cryptography.Algorithms
                 _v0[0] + _mul0[0] + _v1[2] + _mul1[2],
                 _v0[1] + _mul0[1] + _v1[3] + _mul1[3]
             };
-            return BigEndianBitConverter.ToByteArray(hash);
+            return BigEndianBitConverter.GetBytes(hash);
         }
 
         /// <summary>
@@ -263,7 +263,7 @@ namespace RoxieMobile.CSharpCommons.Cryptography.Algorithms
             var hash = new ulong[4];
             ModularReduction(_v1[1] + _mul1[1], _v1[0] + _mul1[0], _v0[1] + _mul0[1], _v0[0] + _mul0[0], hash, 0);
             ModularReduction(_v1[3] + _mul1[3], _v1[2] + _mul1[2], _v0[3] + _mul0[3], _v0[2] + _mul0[2], hash, 2);
-            return BigEndianBitConverter.ToByteArray(hash);
+            return BigEndianBitConverter.GetBytes(hash);
         }
 
 // MARK: - Private Methods
