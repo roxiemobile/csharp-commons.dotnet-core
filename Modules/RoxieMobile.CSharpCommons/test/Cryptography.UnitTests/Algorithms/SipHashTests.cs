@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using RoxieMobile.CSharpCommons.Cryptography.Algorithms;
-using RoxieMobile.CSharpCommons.Cryptography.Extensions;
+using RoxieMobile.CSharpCommons.Data.Extensions;
 using Xunit;
-using static RoxieMobile.CSharpCommons.Cryptography.Converters.BigEndianBitConverter;
+using static RoxieMobile.CSharpCommons.Data.Converters.BigEndianBitConverter;
 
 namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Algorithms
 {

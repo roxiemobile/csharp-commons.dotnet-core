@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using RoxieMobile.CSharpCommons.Cryptography.Converters;
+using RoxieMobile.CSharpCommons.Data.Converters;
 using Xunit;
 
-namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
+namespace RoxieMobile.CSharpCommons.Data.UnitTests.Converters
 {
     [SuppressMessage("ReSharper", "RedundantCast")]
     public sealed class BigEndianBitConverterTests

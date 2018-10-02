@@ -20,11 +20,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../Diagnostics/Diagnostics.csproj" />
-    <ProjectReference Include="../Extensions/Extensions.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.2" />
+    <ProjectReference Include="../Data/Data.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Directory.Build.props" />

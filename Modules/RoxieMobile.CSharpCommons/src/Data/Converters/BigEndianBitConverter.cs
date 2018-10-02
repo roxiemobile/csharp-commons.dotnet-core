@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace RoxieMobile.CSharpCommons.Cryptography.Converters
+namespace RoxieMobile.CSharpCommons.Data.Converters
 {
     // BitConverter Class
     // @link https://docs.microsoft.com/en-us/dotnet/api/system.bitconverter

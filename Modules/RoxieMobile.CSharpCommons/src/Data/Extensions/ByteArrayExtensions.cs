@@ -1,6 +1,6 @@
-﻿using RoxieMobile.CSharpCommons.Cryptography.Converters;
+﻿using RoxieMobile.CSharpCommons.Data.Converters;
 
-namespace RoxieMobile.CSharpCommons.Cryptography.Extensions
+namespace RoxieMobile.CSharpCommons.Data.Extensions
 {
     public static class ByteArrayExtensions
     {

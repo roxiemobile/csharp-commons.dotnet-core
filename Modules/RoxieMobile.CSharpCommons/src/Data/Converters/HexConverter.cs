@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RoxieMobile.CSharpCommons.Cryptography.Converters
+namespace RoxieMobile.CSharpCommons.Data.Converters
 {
     // HexConverter
     // @link https://www.openmuc.org/asn1/javadoc/org/openmuc/jasn1/util/HexConverter.html

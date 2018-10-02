@@ -10,6 +10,7 @@ PACKAGE ||= RoxieMobile::Package.new(
   base_dir: base_dir,
   projects_sources: [
     'Abstractions',
+    'Cryptography',
     'Data',
     'DataAnnotations',
     'Diagnostics',
@@ -19,6 +20,7 @@ PACKAGE ||= RoxieMobile::Package.new(
     'Logging'
   ],
   projects_tests: [
+    'Cryptography.UnitTests',
     'Data.UnitTests',
     'Diagnostics.UnitTests'
   ]

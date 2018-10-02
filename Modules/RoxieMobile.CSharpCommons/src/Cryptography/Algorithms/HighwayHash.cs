@@ -1,4 +1,4 @@
-﻿using RoxieMobile.CSharpCommons.Cryptography.Converters;
+﻿using RoxieMobile.CSharpCommons.Data.Converters;
 using RoxieMobile.CSharpCommons.Diagnostics;
 
 namespace RoxieMobile.CSharpCommons.Cryptography.Algorithms
