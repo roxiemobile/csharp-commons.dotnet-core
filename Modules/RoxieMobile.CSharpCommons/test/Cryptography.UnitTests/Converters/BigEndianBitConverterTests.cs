@@ -143,6 +143,25 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
         }
 
         [Fact]
+        private void TestBooleanConversion()
+        {
+            const bool value = true;
+
+            var arr_v0 = BitConverter.GetBytes(value);
+            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
+            Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
+
+            var val_v1 = BigEndianBitConverter.ToBoolean(arr_v1);
+            Assert.Equal(val_v1, value);
+
+            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
+            var val_v2 = BigEndianBitConverter.ToBoolean(arr_v2);
+            var val_v3 = BigEndianBitConverter.ToBoolean(arr_v2, sizeof(byte));
+            Assert.Equal(val_v2, value);
+            Assert.Equal(val_v3, value);
+        }
+
+        [Fact]
         private void TestSingleConversion()
         {
             const float value = 0x004F003F002F001F;
@@ -196,25 +215,6 @@ namespace RoxieMobile.CSharpCommons.Cryptography.UnitTests.Converters
             var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
             var val_v2 = BigEndianBitConverter.ToDecimal(arr_v2);
             var val_v3 = BigEndianBitConverter.ToDecimal(arr_v2, sizeof(decimal));
-            Assert.Equal(val_v2, value);
-            Assert.Equal(val_v3, value);
-        }
-
-        [Fact]
-        private void TestBooleanConversion()
-        {
-            const bool value = true;
-
-            var arr_v0 = BitConverter.GetBytes(value);
-            var arr_v1 = BigEndianBitConverter.ToByteArray(value);
-            Assert.True(BitConverter.IsLittleEndian ? arr_v0.Reverse().SequenceEqual(arr_v1) : arr_v0.SequenceEqual(arr_v1));
-
-            var val_v1 = BigEndianBitConverter.ToBoolean(arr_v1);
-            Assert.Equal(val_v1, value);
-
-            var arr_v2 = BigEndianBitConverter.ToByteArray(new[] {value, value});
-            var val_v2 = BigEndianBitConverter.ToBoolean(arr_v2);
-            var val_v3 = BigEndianBitConverter.ToBoolean(arr_v2, sizeof(byte));
             Assert.Equal(val_v2, value);
             Assert.Equal(val_v3, value);
         }
