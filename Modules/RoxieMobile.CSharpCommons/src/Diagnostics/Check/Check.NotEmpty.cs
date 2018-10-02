@@ -111,5 +111,40 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
                 throw NewCheckException(block());
             }
         }
+
+// MARK: - Methods: Read-Only Generic Collection
+
+        /// <summary>
+        /// Checks that a read-only collection is not <c>null</c> and not empty.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter.</typeparam>
+        /// <param name="collection">The read-only collection to check or <c>null</c>.</param>
+        /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
+        /// <exception cref="CheckException" />
+        public static void NotEmpty<T>(IReadOnlyCollection<T> collection, string message = null)
+        {
+            if (!collection.IsNotEmpty()) {
+                throw NewCheckException(message);
+            }
+        }
+
+        /// <summary>
+        /// Checks that a read-only collection is not <c>null</c> and not empty.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter.</typeparam>
+        /// <param name="collection">The read-only collection to check or <c>null</c>.</param>
+        /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
+        /// <exception cref="CheckException" />
+        public static void NotEmpty<T>(IReadOnlyCollection<T> collection, Func<string> block)
+        {
+            if (block == null) {
+                throw new ArgumentNullException(nameof(block));
+            }
+
+            if (!collection.IsNotEmpty()) {
+                throw NewCheckException(block());
+            }
+        }
     }
 }

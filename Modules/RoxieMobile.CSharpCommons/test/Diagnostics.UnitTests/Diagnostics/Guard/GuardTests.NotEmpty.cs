@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using RoxieMobile.CSharpCommons.Extensions;
 using Xunit;
 using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
@@ -51,12 +52,22 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             List<string> emptyList = new List<string>();
 
             GuardThrowsError($"{method}_List",
-                () => Guard.NotEmpty(nilList));
+                () => Guard.NotEmpty(nilList.AsCollection()));
             GuardThrowsError($"{method}_List",
-                () => Guard.NotEmpty(emptyList));
+                () => Guard.NotEmpty(emptyList.AsCollection()));
 
             GuardNotThrowsError($"{method}_List",
-                () => Guard.NotEmpty(list));
+                () => Guard.NotEmpty(list.AsCollection()));
+
+            // --
+
+            GuardThrowsError($"{method}_List",
+                () => Guard.NotEmpty(nilList.AsReadOnlyCollection()));
+            GuardThrowsError($"{method}_List",
+                () => Guard.NotEmpty(emptyList.AsReadOnlyCollection()));
+
+            GuardNotThrowsError($"{method}_List",
+                () => Guard.NotEmpty(list.AsReadOnlyCollection()));
 
             // --
 
@@ -65,12 +76,22 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             Dictionary<string, string> emptyMap = new Dictionary<string, string>();
 
             GuardThrowsError($"{method}_Dictionary",
-                () => Guard.NotEmpty(nilMap));
+                () => Guard.NotEmpty(nilMap.AsCollection()));
             GuardThrowsError($"{method}_Dictionary",
-                () => Guard.NotEmpty(emptyMap));
+                () => Guard.NotEmpty(emptyMap.AsCollection()));
 
             GuardNotThrowsError($"{method}_Dictionary",
-                () => Guard.NotEmpty(map));
+                () => Guard.NotEmpty(map.AsCollection()));
+
+            // --
+
+            GuardThrowsError($"{method}_Dictionary",
+                () => Guard.NotEmpty(nilMap.AsReadOnlyCollection()));
+            GuardThrowsError($"{method}_Dictionary",
+                () => Guard.NotEmpty(emptyMap.AsReadOnlyCollection()));
+
+            GuardNotThrowsError($"{method}_Dictionary",
+                () => Guard.NotEmpty(map.AsReadOnlyCollection()));
         }
     }
 }

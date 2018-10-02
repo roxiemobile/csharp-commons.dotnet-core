@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using RoxieMobile.CSharpCommons.Extensions;
 using Xunit;
 using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
@@ -51,12 +52,22 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             List<string> emptyList = new List<string>();
 
             CheckThrowsException($"{method}_List",
-                () => Check.NotEmpty(nilList));
+                () => Check.NotEmpty(nilList.AsCollection()));
             CheckThrowsException($"{method}_List",
-                () => Check.NotEmpty(emptyList));
+                () => Check.NotEmpty(emptyList.AsCollection()));
 
             CheckNotThrowsException($"{method}_List",
-                () => Check.NotEmpty(list));
+                () => Check.NotEmpty(list.AsCollection()));
+
+            // --
+
+            CheckThrowsException($"{method}_List",
+                () => Check.NotEmpty(nilList.AsReadOnlyCollection()));
+            CheckThrowsException($"{method}_List",
+                () => Check.NotEmpty(emptyList.AsReadOnlyCollection()));
+
+            CheckNotThrowsException($"{method}_List",
+                () => Check.NotEmpty(list.AsReadOnlyCollection()));
 
             // --
 
@@ -65,12 +76,22 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             Dictionary<string, string> emptyMap = new Dictionary<string, string>();
 
             CheckThrowsException($"{method}_Dictionary",
-                () => Check.NotEmpty(nilMap));
+                () => Check.NotEmpty(nilMap.AsCollection()));
             CheckThrowsException($"{method}_Dictionary",
-                () => Check.NotEmpty(emptyMap));
+                () => Check.NotEmpty(emptyMap.AsCollection()));
 
             CheckNotThrowsException($"{method}_Dictionary",
-                () => Check.NotEmpty(map));
+                () => Check.NotEmpty(map.AsCollection()));
+
+            // --
+
+            CheckThrowsException($"{method}_Dictionary",
+                () => Check.NotEmpty(nilMap.AsReadOnlyCollection()));
+            CheckThrowsException($"{method}_Dictionary",
+                () => Check.NotEmpty(emptyMap.AsReadOnlyCollection()));
+
+            CheckNotThrowsException($"{method}_Dictionary",
+                () => Check.NotEmpty(map.AsReadOnlyCollection()));
         }
     }
 }

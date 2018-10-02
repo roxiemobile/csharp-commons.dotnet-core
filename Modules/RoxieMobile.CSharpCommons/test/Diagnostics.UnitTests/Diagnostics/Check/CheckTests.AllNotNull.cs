@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using RoxieMobile.CSharpCommons.Extensions;
 using Xunit;
 using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
@@ -44,16 +45,30 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             List<string> emptyList = new List<string>();
 
             CheckThrowsException($"{method}_List",
-                () => Check.AllNotNull(ToArray(value, nilValue).ToList()));
+                () => Check.AllNotNull(ToArray(value, nilValue).ToList().AsCollection()));
             CheckThrowsException($"{method}_List",
-                () => Check.AllNotNull(ToArray(emptyValue, nilValue).ToList()));
+                () => Check.AllNotNull(ToArray(emptyValue, nilValue).ToList().AsCollection()));
 
             CheckNotThrowsException($"{method}_List",
-                () => Check.AllNotNull(list));
+                () => Check.AllNotNull(list.AsCollection()));
             CheckNotThrowsException($"{method}_List",
-                () => Check.Empty(nilList));
+                () => Check.Empty(nilList.AsCollection()));
             CheckNotThrowsException($"{method}_List",
-                () => Check.Empty(emptyList));
+                () => Check.Empty(emptyList.AsCollection()));
+
+            // --
+
+            CheckThrowsException($"{method}_List",
+                () => Check.AllNotNull(ToArray(value, nilValue).ToList().AsReadOnlyCollection()));
+            CheckThrowsException($"{method}_List",
+                () => Check.AllNotNull(ToArray(emptyValue, nilValue).ToList().AsReadOnlyCollection()));
+
+            CheckNotThrowsException($"{method}_List",
+                () => Check.AllNotNull(list.AsReadOnlyCollection()));
+            CheckNotThrowsException($"{method}_List",
+                () => Check.Empty(nilList.AsReadOnlyCollection()));
+            CheckNotThrowsException($"{method}_List",
+                () => Check.Empty(emptyList.AsReadOnlyCollection()));
         }
     }
 }

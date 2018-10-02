@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using RoxieMobile.CSharpCommons.Extensions;
 using Xunit;
 using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
@@ -44,16 +45,30 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             List<string> emptyList = new List<string>();
 
             GuardThrowsError($"{method}_List",
-                () => Guard.AllNotNull(ToArray(value, nilValue).ToList()));
+                () => Guard.AllNotNull(ToArray(value, nilValue).ToList().AsCollection()));
             GuardThrowsError($"{method}_List",
-                () => Guard.AllNotNull(ToArray(emptyValue, nilValue).ToList()));
+                () => Guard.AllNotNull(ToArray(emptyValue, nilValue).ToList().AsCollection()));
 
             GuardNotThrowsError($"{method}_List",
-                () => Guard.AllNotNull(list));
+                () => Guard.AllNotNull(list.AsCollection()));
             GuardNotThrowsError($"{method}_List",
-                () => Guard.Empty(nilList));
+                () => Guard.Empty(nilList.AsCollection()));
             GuardNotThrowsError($"{method}_List",
-                () => Guard.Empty(emptyList));
+                () => Guard.Empty(emptyList.AsCollection()));
+
+            // --
+
+            GuardThrowsError($"{method}_List",
+                () => Guard.AllNotNull(ToArray(value, nilValue).ToList().AsReadOnlyCollection()));
+            GuardThrowsError($"{method}_List",
+                () => Guard.AllNotNull(ToArray(emptyValue, nilValue).ToList().AsReadOnlyCollection()));
+
+            GuardNotThrowsError($"{method}_List",
+                () => Guard.AllNotNull(list.AsReadOnlyCollection()));
+            GuardNotThrowsError($"{method}_List",
+                () => Guard.Empty(nilList.AsReadOnlyCollection()));
+            GuardNotThrowsError($"{method}_List",
+                () => Guard.Empty(emptyList.AsReadOnlyCollection()));
         }
     }
 }
