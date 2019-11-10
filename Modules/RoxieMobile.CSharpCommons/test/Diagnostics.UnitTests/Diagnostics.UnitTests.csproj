@@ -2,8 +2,8 @@
   <PropertyGroup>
     <AssemblyName>RoxieMobile.CSharpCommons.Diagnostics.UnitTests</AssemblyName>
     <VersionPrefix>0.6.0</VersionPrefix>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RuntimeFrameworkVersion>2.1.5</RuntimeFrameworkVersion>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RuntimeFrameworkVersion>2.2.7</RuntimeFrameworkVersion>
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
