@@ -146,4 +146,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         public static Func<string> LengthIsNotEqual<T>(string name, T value) =>
             () => $"Length of ‘{name}’ is not equal to ‘{value}’";
     }
+
+    public static partial class Funcs
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> NotEqualTo<T>(string name, T value) =>
+            () => $"‘{name}’ is not equal to ‘{value}’";
+    }
 }
