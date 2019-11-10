@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>RoxieMobile.CSharpCommons.Cryptography</AssemblyName>
-    <VersionPrefix>0.6.0</VersionPrefix>
+    <VersionPrefix>0.7.0</VersionPrefix>
     <Title>$(AssemblyName)</Title>
     <Description>Provides modern cryptographic algorithm implementations for .NET Core.</Description>
     <PackageProjectUrl>https://github.com/roxiemobile/csharp-commons.dotnet-core</PackageProjectUrl>
