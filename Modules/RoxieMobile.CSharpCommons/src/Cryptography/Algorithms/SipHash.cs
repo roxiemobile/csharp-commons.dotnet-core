@@ -75,7 +75,7 @@ namespace RoxieMobile.CSharpCommons.Cryptography.Algorithms
             Guard.GreaterThanOrEqualTo(data.Length - offset, count,
                 () => $"The specified '{nameof(offset)}' and '{nameof(count)}' parameters do not specify a valid range in '{nameof(data)}'.");
 
-            byte[] result = null;
+            byte[]? result = null;
 
             // SipHash internal state
             var v0 = _initialState0;
