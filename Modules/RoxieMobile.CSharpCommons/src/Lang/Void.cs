@@ -9,7 +9,8 @@ namespace RoxieMobile.CSharpCommons.Lang
         /// <summary>
         /// The Void class cannot be instantiated.
         /// </summary>
-        private Void() {}
+        private Void()
+        {}
 
         /// <summary>
         /// Gets the single unit value.

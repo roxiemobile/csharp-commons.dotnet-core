@@ -2,11 +2,12 @@
   <PropertyGroup>
     <AssemblyName>RoxieMobile.CSharpCommons.Cryptography.UnitTests</AssemblyName>
     <VersionPrefix>0.7.0</VersionPrefix>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RuntimeFrameworkVersion>2.2.7</RuntimeFrameworkVersion>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/Cryptography/Cryptography.csproj" />

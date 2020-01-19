@@ -2,9 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Localization;
-using RoxieMobile.CSharpCommons.Diagnostics;
 
-// ReSharper disable once CheckNamespace
+// LocalizationServiceCollectionExtensions.cs
+// @link https://github.com/dotnet/extensions/blob/master/src/Localization/Localization/src/LocalizationServiceCollectionExtensions.cs
+
 namespace RoxieMobile.CSharpCommons.Localization.Xml
 {
     /// <summary>
@@ -19,7 +20,10 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IServiceCollection AddXmlStringLocalization(this IServiceCollection services)
         {
-            Guard.NotNull(services, Funcs.Null(nameof(services)));
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
 
             services.AddOptions();
 
@@ -40,21 +44,29 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
             this IServiceCollection services,
             Action<LocalizationOptions> setupAction)
         {
-            Guard.NotNull(services, Funcs.Null(nameof(services)));
-            Guard.NotNull(setupAction, Funcs.Null(nameof(setupAction)));
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
+            if (setupAction == null)
+            {
+                throw new ArgumentNullException(nameof(setupAction));
+            }
 
             AddXmlStringLocalizationServices(services, setupAction);
 
             return services;
         }
 
-        private static void AddXmlStringLocalizationServices(IServiceCollection services)
+        // To enable unit testing
+        internal static void AddXmlStringLocalizationServices(IServiceCollection services)
         {
-            services.TryAddSingleton<IXmlStringLocalizerFactory, XmlStringLocalizerFactory>();
+            services.TryAddSingleton<IXmlStringLocalizerFactory, XmlResourceManagerStringLocalizerFactory>();
             services.TryAddTransient(typeof(IXmlStringLocalizer<>), typeof(XmlStringLocalizer<>));
         }
 
-        private static void AddXmlStringLocalizationServices(
+        internal static void AddXmlStringLocalizationServices(
             IServiceCollection services,
             Action<LocalizationOptions> setupAction)
         {

@@ -15,12 +15,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllBlank(string method)
         {
             const string value = "value";
-            const string nilValue = null;
+            const string? nilValue = null;
             const string emptyValue = "";
             const string whitespaceValue = " \t\r\n";
 
-            string[] array = ToArray(nilValue, emptyValue, whitespaceValue);
-            string[] nilArray = null;
+            string?[] array = ToArray(nilValue, emptyValue, whitespaceValue);
+            string[]? nilArray = null;
             string[] emptyArray = {};
 
 

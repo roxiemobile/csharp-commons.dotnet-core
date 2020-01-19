@@ -15,9 +15,9 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="reference">Object to check or <c>null</c>.</param>
         /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
         /// <exception cref="GuardError" />
-        public static void NotNull(object reference, string message = null)
+        public static void NotNull(object? reference, string? message = null)
         {
-            if (TryIsFailure(() => Check.NotNull(reference), out Exception cause)) {
+            if (TryIsFailure(() => Check.NotNull(reference), out var cause)) {
                 throw NewGuardError(message, cause);
             }
         }
@@ -29,13 +29,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="block">The function which returns identifying message for the <see cref="GuardError"/>.</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="GuardError" />
-        public static void NotNull(object reference, Func<string> block)
+        public static void NotNull(object? reference, Func<string> block)
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));
             }
 
-            if (TryIsFailure(() => Check.NotNull(reference), out Exception cause)) {
+            if (TryIsFailure(() => Check.NotNull(reference), out var cause)) {
                 throw NewGuardError(block(), cause);
             }
         }

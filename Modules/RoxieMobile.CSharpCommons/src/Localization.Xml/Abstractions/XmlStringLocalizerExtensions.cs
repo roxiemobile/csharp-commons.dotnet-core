@@ -1,9 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Extensions.Localization;
-using RoxieMobile.CSharpCommons.Diagnostics;
 
+// StringLocalizerExtensions.cs
+// @link https://github.com/dotnet/extensions/blob/master/src/Localization/Abstractions/src/StringLocalizerExtensions.cs
+
+// ReSharper disable once CheckNamespace
 namespace RoxieMobile.CSharpCommons.Localization.Xml
 {
+    /// <summary>
+    /// Extension methods for operating on <see cref="IXmlStringLocalizer" /> instances.
+    /// </summary>
     public static class XmlStringLocalizerExtensions
     {
         /// <summary>
@@ -16,8 +23,15 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
             this IXmlStringLocalizer stringLocalizer,
             string name)
         {
-            Guard.NotNull(stringLocalizer, Funcs.Null(nameof(stringLocalizer)));
-            Guard.NotNull(name, Funcs.Null(nameof(name)));
+            if (stringLocalizer == null)
+            {
+                throw new ArgumentNullException(nameof(stringLocalizer));
+            }
+
+            if (name == null)
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
 
             return stringLocalizer[name];
         }
@@ -34,8 +48,15 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
             string name,
             params object[] arguments)
         {
-            Guard.NotNull(stringLocalizer, Funcs.Null(nameof(stringLocalizer)));
-            Guard.NotNull(name, Funcs.Null(nameof(name)));
+            if (stringLocalizer == null)
+            {
+                throw new ArgumentNullException(nameof(stringLocalizer));
+            }
+
+            if (name == null)
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
 
             return stringLocalizer[name, arguments];
         }
@@ -47,7 +68,10 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         /// <returns>The string resources.</returns>
         public static IEnumerable<LocalizedString> GetAllStrings(this IXmlStringLocalizer stringLocalizer)
         {
-            Guard.NotNull(stringLocalizer, Funcs.Null(nameof(stringLocalizer)));
+            if (stringLocalizer == null)
+            {
+                throw new ArgumentNullException(nameof(stringLocalizer));
+            }
 
             return stringLocalizer.GetAllStrings(includeParentCultures: true);
         }

@@ -11,7 +11,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void Blank(string method)
         {
             const string value = "value";
-            const string nilValue = null;
+            const string? nilValue = null;
             const string emptyValue = "";
             const string whitespaceValue = " \t\r\n";
 

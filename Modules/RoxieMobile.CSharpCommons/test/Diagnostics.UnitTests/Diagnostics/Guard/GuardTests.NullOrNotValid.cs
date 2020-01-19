@@ -15,7 +15,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void NullOrNotValid(string method)
         {
             IValidatable validObject = new ValidModel();
-            IValidatable nilObject = null;
+            IValidatable? nilObject = null;
             IValidatable notValidObject = new NotValidModel();
 
 

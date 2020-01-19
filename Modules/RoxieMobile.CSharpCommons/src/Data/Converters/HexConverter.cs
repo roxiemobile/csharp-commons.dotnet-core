@@ -110,8 +110,7 @@ namespace RoxieMobile.CSharpCommons.Data.Converters
         private static byte ParseNibble(char ch)
         {
             // @formatter:off
-            switch (ch)
-            {
+            switch (ch) {
                 case '0': case '1': case '2': case '3': case '4':
                 case '5': case '6': case '7': case '8': case '9':
                     return (byte) (ch - '0');

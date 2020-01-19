@@ -15,9 +15,9 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="condition">Condition to be checked.</param>
         /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
         /// <exception cref="GuardError" />
-        public static void True(bool condition, string message = null)
+        public static void True(bool condition, string? message = null)
         {
-            if (TryIsFailure(() => Check.True(condition), out Exception cause)) {
+            if (TryIsFailure(() => Check.True(condition), out var cause)) {
                 throw NewGuardError(message, cause);
             }
         }
@@ -35,7 +35,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
                 throw new ArgumentNullException(nameof(block));
             }
 
-            if (TryIsFailure(() => Check.True(condition), out Exception cause)) {
+            if (TryIsFailure(() => Check.True(condition), out var cause)) {
                 throw NewGuardError(block(), cause);
             }
         }

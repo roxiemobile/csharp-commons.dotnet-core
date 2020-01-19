@@ -1,4 +1,5 @@
 ﻿using System;
+using RoxieMobile.CSharpCommons.Extensions;
 
 namespace RoxieMobile.CSharpCommons.Data.Helpers
 {
@@ -9,9 +10,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
         /// <typeparam name="T">The type of object to create.</typeparam>
         /// <param name="args">An array of arguments that match in number, order, and type the parameters of the constructor to invoke. If args is an empty array or null, the constructor that takes no parameters (the default constructor) is invoked.</param>
         /// <returns>A reference to the newly created object.</returns>
-        public static T NewInstance<T>(params object[] args)
-        {
-            return (T) Activator.CreateInstance(typeof(T), args);
-        }
+        public static T NewInstance<T>(params object?[]? args) =>
+            Activator.CreateInstance(typeof(T), args).CastTo<T>();
     }
 }

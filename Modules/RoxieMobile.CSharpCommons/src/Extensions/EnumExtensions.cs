@@ -15,15 +15,15 @@ namespace RoxieMobile.CSharpCommons.Extensions
         /// <summary>
         /// Retrieve the string corresponding to the enum value for the given type.
         /// </summary>
-        /// <param name="value">Enumerator's value</param>
+        /// <param name="source">Enumerator's value.</param>
         /// <returns>A string representation of an Enumerator's value.</returns>
-        public static string ToEnumString(this Enum value)
+        public static string ToEnumString(this Enum source)
         {
-            var stringValue = value.ToString();
-            return value
+            var stringValue = source.ToString();
+            return source
                 .GetType()
-                .GetField(stringValue)
-                .GetCustomAttributes(typeof(EnumMemberAttribute), true)
+                .GetField(stringValue)?
+                .GetCustomAttributes(typeof(EnumMemberAttribute), false)
                 .Cast<EnumMemberAttribute>()
                 .Select(a => a.Value)
                 .SingleOrDefault() ?? stringValue;

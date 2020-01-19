@@ -16,7 +16,7 @@ namespace RoxieMobile.CSharpCommons.Data.Validators
 
 // MARK: - Methods
 
-        public bool IsValid(object value)
+        public bool IsValid(object? value)
         {
             switch (value) {
                 case string str: {
@@ -28,7 +28,7 @@ namespace RoxieMobile.CSharpCommons.Data.Validators
                 default: {
                     return false;
                 }
-            } 
+            }
         }
 
 // MARK: - Constants
@@ -50,7 +50,7 @@ namespace RoxieMobile.CSharpCommons.Data.Validators
                     // IP address dotted notation octets
                     // excludes loopback network 0.0.0.0
                     // excludes reserved space >= 224.0.0.0
-                    // excludes network & broacast addresses (first & last IP address of each class)
+                    // excludes network & broadcast addresses (first & last IP address of each class)
                     + "(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])"
                     + "(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}"
                     + "(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))"

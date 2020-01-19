@@ -17,8 +17,8 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="max">The maximum.</param>
         /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
         /// <exception cref="CheckException" />
-        public static void LessThan<T>(T value, T max, string message = null)
-            where T : IComparable<T>
+        public static void LessThan<T>(T value, T max, string? message = null)
+            where T : notnull, IComparable<T>
         {
             if (value.CompareTo(max) >= 0) {
                 throw NewCheckException(message);
@@ -35,7 +35,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="CheckException" />
         public static void LessThan<T>(T value, T max, Func<string> block)
-            where T : IComparable<T>
+            where T : notnull, IComparable<T>
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));

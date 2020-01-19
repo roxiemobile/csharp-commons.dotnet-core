@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using Microsoft.Extensions.Localization;
-using RoxieMobile.CSharpCommons.Diagnostics;
 
+// StringLocalizerOfT.cs
+// @link https://github.com/dotnet/extensions/blob/master/src/Localization/Abstractions/src/StringLocalizerOfT.cs
+
+// ReSharper disable once CheckNamespace
 namespace RoxieMobile.CSharpCommons.Localization.Xml
 {
     /// <summary>
@@ -12,7 +14,7 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
     /// <typeparam name="TResourceSource">The <see cref="Type"/> to provide strings for.</typeparam>
     public class XmlStringLocalizer<TResourceSource> : IXmlStringLocalizer<TResourceSource>
     {
-        private readonly IXmlStringLocalizer _localizer;
+        private IXmlStringLocalizer _localizer;
 
         /// <summary>
         /// Creates a new <see cref="XmlStringLocalizer{TResourceSource}"/>.
@@ -20,7 +22,10 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         /// <param name="factory">The <see cref="IXmlStringLocalizerFactory"/> to use.</param>
         public XmlStringLocalizer(IXmlStringLocalizerFactory factory)
         {
-            Guard.NotNull(factory, Funcs.Null(nameof(factory)));
+            if (factory == null)
+            {
+                throw new ArgumentNullException(nameof(factory));
+            }
 
             _localizer = factory.Create(typeof(TResourceSource));
         }
@@ -30,7 +35,10 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         {
             get
             {
-                Guard.NotNull(name, Funcs.Null(nameof(name)));
+                if (name == null)
+                {
+                    throw new ArgumentNullException(nameof(name));
+                }
 
                 return _localizer[name];
             }
@@ -41,7 +49,10 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         {
             get
             {
-                Guard.NotNull(name, Funcs.Null(nameof(name)));
+                if (name == null)
+                {
+                    throw new ArgumentNullException(nameof(name));
+                }
 
                 return _localizer[name, arguments];
             }
@@ -50,9 +61,5 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         /// <inheritdoc />
         public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures) =>
             _localizer.GetAllStrings(includeParentCultures);
-
-        /// <inheritdoc />
-        public virtual IXmlStringLocalizer WithCulture(CultureInfo culture) =>
-            _localizer.WithCulture(culture);
     }
 }

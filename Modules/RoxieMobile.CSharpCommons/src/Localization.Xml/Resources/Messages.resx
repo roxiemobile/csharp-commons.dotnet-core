@@ -143,7 +143,7 @@
   <data name="Argument_MustBeRuntimeAssembly" xml:space="preserve">
     <value>Assembly must be a runtime Assembly object.</value>
   </data>
-  <data name="Argument_MissingXmlResourceException" xml:space="preserve">
+  <data name="Arg_MissingXmlResourceException" xml:space="preserve">
     <value>Unable to find XML resource.</value>
   </data>
 </root>

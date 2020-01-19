@@ -17,7 +17,7 @@ namespace RoxieMobile.CSharpCommons.Extensions
         /// </summary>
         /// <param name="obj">Object to check.</param>
         /// <returns><c>true</c> if the <paramref name="obj"/> is <c>null</c> or valid.</returns>
-        public static bool IsNullOrValid(this IValidatable obj) =>
+        public static bool IsNullOrValid(this IValidatable? obj) =>
             obj?.IsValid() ?? true;
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace RoxieMobile.CSharpCommons.Extensions
         /// </summary>
         /// <param name="obj">Object to check.</param>
         /// <returns><c>true</c> if the <paramref name="obj"/> is <c>null</c> or not valid.</returns>
-        public static bool IsNullOrNotValid(this IValidatable obj) =>
+        public static bool IsNullOrNotValid(this IValidatable? obj) =>
             !obj?.IsValid() ?? true;
     }
 }

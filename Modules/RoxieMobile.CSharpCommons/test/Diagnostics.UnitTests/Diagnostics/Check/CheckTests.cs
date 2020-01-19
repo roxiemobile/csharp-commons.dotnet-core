@@ -15,7 +15,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             CheckArgument(classOfT != null, () => $"{nameof(classOfT)} is null");
             CheckArgument(action != null, () => $"{nameof(action)} is null");
 
-            Exception cause = null;
+            Exception? cause = null;
             try {
                 action?.Invoke();
             }
@@ -47,7 +47,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             CheckArgument(classOfT != null, () => $"{nameof(classOfT)} is null");
             CheckArgument(action != null, () => $"{nameof(action)} is null");
 
-            Exception cause = null;
+            Exception? cause = null;
             try {
                 action?.Invoke();
             }

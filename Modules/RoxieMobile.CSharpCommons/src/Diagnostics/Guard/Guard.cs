@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 // Elysium-Extra/Source/Framework/Guard 
 // @link https://github.com/RehanSaeed/Elysium-Extra/tree/master/Source/Framework/Guard
@@ -14,6 +15,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     /// These methods can be used directly: `Guard.isTrue(...)`.
     /// </summary>
     [DebuggerStepThrough]
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public static partial class Guard
     {
 // MARK: - Methods
@@ -23,7 +25,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// </summary>
         /// <param name="message">The error message that explains the reason for the error.</param>
         /// <param name="innerException">The exception that is the cause of the current error, or a <c>null</c> reference if no inner exception is specified.</param>
-        public static GuardError NewGuardError(string message, Exception innerException = null) =>
+        public static GuardError NewGuardError(string? message, Exception? innerException = null) =>
             string.IsNullOrWhiteSpace(message)
                 ? new GuardError(innerException)
                 : new GuardError(message, innerException);
@@ -32,12 +34,12 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// Initializes a new instance of the <see cref="GuardError"/> class with a reference to the inner exception that is the cause of this error.
         /// </summary>
         /// <param name="innerException">The exception that is the cause of the current error, or a <c>null</c> reference if no inner exception is specified.</param>
-        public static GuardError NewGuardError(Exception innerException = null) =>
+        public static GuardError NewGuardError(Exception? innerException = null) =>
             new GuardError(innerException);
 
 // MARK: - Private Methods
 
-        private static bool TryIsFailure(Action block, out Exception cause)
+        private static bool TryIsFailure(Action block, out Exception? cause)
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));

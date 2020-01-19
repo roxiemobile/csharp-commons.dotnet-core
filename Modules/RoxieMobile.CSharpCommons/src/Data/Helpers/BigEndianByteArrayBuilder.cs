@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
-using RoxieMobile.CSharpCommons.Data.Abstractions;
+using RoxieMobile.CSharpCommons.Abstractions.Providers;
 using RoxieMobile.CSharpCommons.Data.Converters;
 using RoxieMobile.CSharpCommons.Extensions;
 
@@ -21,7 +21,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
         {
             // Init instance
             _bufferSize = bufferSize;
-            _currentBuffer = null;
+            _currentBuffer = new byte[bufferSize];
             _currentOffset = 0;
             _completedBuffers = new List<ArraySegment<byte>>();
             _completedLength = 0;
@@ -34,14 +34,14 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
 
 // MARK: - Methods
 
-        public BigEndianByteArrayBuilder Append(string value, Encoding encoding = null)
+        public BigEndianByteArrayBuilder Append(string? value, Encoding? encoding = null)
         {
             return (value?.IsNotEmpty() ?? false)
                 ? AppendByteArray((encoding ?? _encodingUtf32BE).GetBytes(value))
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(Enum value)
+        public BigEndianByteArrayBuilder Append(Enum? value)
         {
             return (value != null)
                 ? Append(value.ToEnumString(), _encodingUtf32BE)
@@ -57,7 +57,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(long[] array)
+        public BigEndianByteArrayBuilder Append(long[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -73,7 +73,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(ulong[] array)
+        public BigEndianByteArrayBuilder Append(ulong[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -89,7 +89,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(int[] array)
+        public BigEndianByteArrayBuilder Append(int[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -105,7 +105,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(uint[] array)
+        public BigEndianByteArrayBuilder Append(uint[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -121,7 +121,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(short[] array)
+        public BigEndianByteArrayBuilder Append(short[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -137,7 +137,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(ushort[] array)
+        public BigEndianByteArrayBuilder Append(ushort[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -155,7 +155,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
             return this;
         }
 
-        public BigEndianByteArrayBuilder Append(sbyte[] array)
+        public BigEndianByteArrayBuilder Append(sbyte[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -173,7 +173,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
             return this;
         }
 
-        public BigEndianByteArrayBuilder Append(byte[] array)
+        public BigEndianByteArrayBuilder Append(byte[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -189,7 +189,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(char[] array)
+        public BigEndianByteArrayBuilder Append(char[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -202,15 +202,15 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
         {
             if (value.HasValue) {
                 EnsureRoomFor(1);
-                _currentBuffer[_currentOffset++] = (value.Value ? (byte) 1 : (byte) 0);
+                _currentBuffer[_currentOffset++] = BoolToByte(value.Value);
             }
             return this;
         }
 
-        public BigEndianByteArrayBuilder Append(bool[] array)
+        public BigEndianByteArrayBuilder Append(bool[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
-                ? AppendByteArray(Array.ConvertAll(array, item => item ? (byte) 1 : (byte) 0))
+                ? AppendByteArray(Array.ConvertAll(array, BoolToByte))
                 : this;
         }
 
@@ -223,7 +223,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(float[] array)
+        public BigEndianByteArrayBuilder Append(float[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -239,7 +239,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(double[] array)
+        public BigEndianByteArrayBuilder Append(double[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -255,7 +255,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(decimal[] array)
+        public BigEndianByteArrayBuilder Append(decimal[]? array)
         {
             return (array?.IsNotEmpty() ?? false)
                 ? AppendByteArray(array)
@@ -264,14 +264,14 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
 
 // MARK: - Methods: IByteArrayProvider
 
-        public BigEndianByteArrayBuilder Append(IByteArrayProvider source)
+        public BigEndianByteArrayBuilder Append(IByteArrayProvider? source)
         {
             return (source != null)
                 ? AppendByteArray(source.ToByteArray())
                 : this;
         }
 
-        public BigEndianByteArrayBuilder Append(IEnumerable<IByteArrayProvider> collection)
+        public BigEndianByteArrayBuilder Append(IEnumerable<IByteArrayProvider?>? collection)
         {
             if (collection != null) {
                 foreach (var item in collection) {
@@ -284,11 +284,14 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
         public byte[] ToByteArray()
         {
             var result = new byte[this.Length];
-
             var offset = 0;
+
             foreach (var buffer in _completedBuffers) {
-                Array.Copy(buffer.Array, buffer.Offset, result, offset, buffer.Count);
-                offset += buffer.Count;
+                if (buffer.Array != null) {
+
+                    Array.Copy(buffer.Array, buffer.Offset, result, offset, buffer.Count);
+                    offset += buffer.Count;
+                }
             }
 
             if ((_currentOffset > 0) && (_currentBuffer != null)) {
@@ -351,6 +354,9 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
             }
         }
 
+        private byte BoolToByte(bool value) =>
+            value ? (byte) 1 : (byte) 0;
+
 // MARK: - Constants
 
         private const ushort DEFAULT_BUFFER_SIZE = 4096;
@@ -365,7 +371,7 @@ namespace RoxieMobile.CSharpCommons.Data.Helpers
 
         private int _currentOffset;
 
-        private readonly List<ArraySegment<byte>> _completedBuffers;
+        private readonly ICollection<ArraySegment<byte>> _completedBuffers;
 
         private int _completedLength;
     }

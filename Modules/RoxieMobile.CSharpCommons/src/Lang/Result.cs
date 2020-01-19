@@ -1,30 +1,34 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace RoxieMobile.CSharpCommons.Lang
 {
     public class Result<TSuccess, TFailure>
     {
 // MARK: - Construction
 
-        public Result(TSuccess success)
+        public Result([AllowNull] TSuccess success)
         {
-            // Init instance variables
+            // Init instance
             _state = State.Success;
             _success = success;
-            _failure = default(TFailure);
+            _failure = default;
         }
 
-        public Result(TFailure failure)
+        public Result([AllowNull] TFailure failure)
         {
-            // Init instance variables
+            // Init instance
             _state = State.Failure;
-            _success = default(TSuccess);
+            _success = default;
             _failure = failure;
         }
 
 // MARK: - Methods
 
-        public TSuccess Value => (_state == State.Success) ? _success : default(TSuccess);
+        [MaybeNull]
+        public TSuccess Value => (_state == State.Success) ? _success : default;
 
-        public TFailure Error => (_state == State.Failure) ? _failure : default(TFailure);
+        [MaybeNull]
+        public TFailure Error => (_state == State.Failure) ? _failure : default;
 
         public bool IsSuccess => (_state == State.Success);
 
@@ -42,7 +46,10 @@ namespace RoxieMobile.CSharpCommons.Lang
 
         private readonly State _state;
 
+        [AllowNull]
         private readonly TSuccess _success;
+
+        [AllowNull]
         private readonly TFailure _failure;
     }
 }

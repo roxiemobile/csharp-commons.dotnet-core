@@ -7,6 +7,7 @@ using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 {
+    [SuppressMessage("ReSharper", "ConstantConditionalAccessQualifier")]
     [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
     [SuppressMessage("ReSharper", "SuggestVarOrType_Elsewhere")]
     public partial class GuardTests
@@ -19,7 +20,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         {
             const string value = "value";
             const string otherValue = "otherValue";
-            const string nilValue = null;
+            const string? nilValue = null;
             const string emptyValue = "";
 
 
@@ -34,7 +35,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             string[] array = ToArray(value, otherValue);
-            string[] nilArray = null;
+            string[]? nilArray = null;
             string[] emptyArray = {};
 
             GuardThrowsError($"{method}_Array",
@@ -48,11 +49,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             List<string> list = ToArray(value, otherValue).ToList();
-            List<string> nilList = null;
+            List<string>? nilList = null;
             List<string> emptyList = new List<string>();
 
             GuardThrowsError($"{method}_List",
-                () => Guard.NotEmpty(nilList.AsCollection()));
+                () => Guard.NotEmpty(nilList?.AsCollection()));
             GuardThrowsError($"{method}_List",
                 () => Guard.NotEmpty(emptyList.AsCollection()));
 
@@ -62,7 +63,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             GuardThrowsError($"{method}_List",
-                () => Guard.NotEmpty(nilList.AsReadOnlyCollection()));
+                () => Guard.NotEmpty(nilList?.AsReadOnlyCollection()));
             GuardThrowsError($"{method}_List",
                 () => Guard.NotEmpty(emptyList.AsReadOnlyCollection()));
 
@@ -72,11 +73,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             Dictionary<string, string> map = list.ToDictionary(item => item, item => item);
-            Dictionary<string, string> nilMap = null;
+            Dictionary<string, string>? nilMap = null;
             Dictionary<string, string> emptyMap = new Dictionary<string, string>();
 
             GuardThrowsError($"{method}_Dictionary",
-                () => Guard.NotEmpty(nilMap.AsCollection()));
+                () => Guard.NotEmpty(nilMap?.AsCollection()));
             GuardThrowsError($"{method}_Dictionary",
                 () => Guard.NotEmpty(emptyMap.AsCollection()));
 
@@ -86,7 +87,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             GuardThrowsError($"{method}_Dictionary",
-                () => Guard.NotEmpty(nilMap.AsReadOnlyCollection()));
+                () => Guard.NotEmpty(nilMap?.AsReadOnlyCollection()));
             GuardThrowsError($"{method}_Dictionary",
                 () => Guard.NotEmpty(emptyMap.AsReadOnlyCollection()));
 

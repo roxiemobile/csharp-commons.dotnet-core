@@ -7,6 +7,7 @@ using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 {
+    [SuppressMessage("ReSharper", "ConstantConditionalAccessQualifier")]
     [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
     [SuppressMessage("ReSharper", "SuggestVarOrType_Elsewhere")]
     public partial class CheckTests
@@ -18,11 +19,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllNotNull(string method)
         {
             const string value = "value";
-            const string nilValue = null;
+            const string? nilValue = null;
             const string emptyValue = "";
 
             string[] array = ToArray(value, emptyValue);
-            string[] nilArray = null;
+            string[]? nilArray = null;
             string[] emptyArray = {};
 
 
@@ -41,7 +42,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             List<string> list = ToArray(value, emptyValue).ToList();
-            List<string> nilList = null;
+            List<string>? nilList = null;
             List<string> emptyList = new List<string>();
 
             CheckThrowsException($"{method}_List",
@@ -52,7 +53,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             CheckNotThrowsException($"{method}_List",
                 () => Check.AllNotNull(list.AsCollection()));
             CheckNotThrowsException($"{method}_List",
-                () => Check.Empty(nilList.AsCollection()));
+                () => Check.Empty(nilList?.AsCollection()));
             CheckNotThrowsException($"{method}_List",
                 () => Check.Empty(emptyList.AsCollection()));
 
@@ -66,7 +67,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             CheckNotThrowsException($"{method}_List",
                 () => Check.AllNotNull(list.AsReadOnlyCollection()));
             CheckNotThrowsException($"{method}_List",
-                () => Check.Empty(nilList.AsReadOnlyCollection()));
+                () => Check.Empty(nilList?.AsReadOnlyCollection()));
             CheckNotThrowsException($"{method}_List",
                 () => Check.Empty(emptyList.AsReadOnlyCollection()));
         }

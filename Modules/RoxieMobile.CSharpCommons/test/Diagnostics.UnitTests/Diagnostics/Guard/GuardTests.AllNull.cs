@@ -7,6 +7,7 @@ using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 {
+    [SuppressMessage("ReSharper", "ConstantConditionalAccessQualifier")]
     [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
     [SuppressMessage("ReSharper", "SuggestVarOrType_Elsewhere")]
     public partial class GuardTests
@@ -18,10 +19,10 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllNull(string method)
         {
             const string value = "value";
-            const string nilValue = null;
+            const string? nilValue = null;
             const string emptyValue = "";
 
-            string[] nilArray = null;
+            string[]? nilArray = null;
             string[] emptyArray = {};
 
 
@@ -39,7 +40,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 
             // --
 
-            List<string> nilList = null;
+            List<string>? nilList = null;
             List<string> emptyList = new List<string>();
 
             GuardThrowsError($"{method}_List",
@@ -50,7 +51,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             GuardNotThrowsError($"{method}_List",
                 () => Guard.AllNull(ToArray(nilValue, nilValue).ToList().AsCollection()));
             GuardNotThrowsError($"{method}_List",
-                () => Guard.Empty(nilList.AsCollection()));
+                () => Guard.Empty(nilList?.AsCollection()));
             GuardNotThrowsError($"{method}_List",
                 () => Guard.Empty(emptyList.AsCollection()));
 
@@ -64,7 +65,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             GuardNotThrowsError($"{method}_List",
                 () => Guard.AllNull(ToArray(nilValue, nilValue).ToList().AsReadOnlyCollection()));
             GuardNotThrowsError($"{method}_List",
-                () => Guard.Empty(nilList.AsReadOnlyCollection()));
+                () => Guard.Empty(nilList?.AsReadOnlyCollection()));
             GuardNotThrowsError($"{method}_List",
                 () => Guard.Empty(emptyList.AsReadOnlyCollection()));
         }

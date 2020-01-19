@@ -6,7 +6,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
     /// <summary>
     /// A set of methods useful for validating objects states. Only failed checks are throws exceptions.
     /// </summary>
-    public partial class Guard
+    public static partial class Guard
     {
 // MARK: - Methods
 
@@ -16,9 +16,9 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="obj">Object to check or <c>null</c>.</param>
         /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
         /// <exception cref="GuardError" />
-        public static void Valid(IValidatable obj, string message = null)
+        public static void Valid(IValidatable? obj, string? message = null)
         {
-            if (TryIsFailure(() => Check.Valid(obj), out Exception cause)) {
+            if (TryIsFailure(() => Check.Valid(obj), out var cause)) {
                 throw NewGuardError(message, cause);
             }
         }
@@ -30,13 +30,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="block">The function which returns identifying message for the <see cref="GuardError"/>.</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="GuardError" />
-        public static void Valid(IValidatable obj, Func<string> block)
+        public static void Valid(IValidatable? obj, Func<string> block)
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));
             }
 
-            if (TryIsFailure(() => Check.Valid(obj), out Exception cause)) {
+            if (TryIsFailure(() => Check.Valid(obj), out var cause)) {
                 throw NewGuardError(block(), cause);
             }
         }

@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using RoxieMobile.CSharpCommons.Extensions;
 
 // Json.NET - Disable the deserialization on DateTime
 // @link https://stackoverflow.com/a/11856835
@@ -12,6 +14,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace RoxieMobile.CSharpCommons.Data.Serialization.Json
 {
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public static class JsonCoder
     {
 // MARK: - Properties
@@ -54,21 +57,25 @@ namespace RoxieMobile.CSharpCommons.Data.Serialization.Json
 
 // MARK: - Methods: JSON to POCO
 
+        [return: MaybeNull]
         public static T FromJson<T>(string value, JsonSerializerSettings settings) =>
-            (T) JsonConvert.DeserializeObject(value, typeof(T), settings);
+            JsonConvert.DeserializeObject(value, typeof(T), settings).CastTo<T>();
 
+        [return: MaybeNull]
         public static T FromCamelCaseJson<T>(string value) =>
-            (T) JsonConvert.DeserializeObject(value, typeof(T), CamelCaseJsonSerializerSettings);
+            JsonConvert.DeserializeObject(value, typeof(T), CamelCaseJsonSerializerSettings).CastTo<T>();
 
+        [return: MaybeNull]
         public static T FromDefaultCaseJson<T>(string value) =>
-            (T) JsonConvert.DeserializeObject(value, typeof(T), DefaultCaseJsonSerializerSettings);
+            JsonConvert.DeserializeObject(value, typeof(T), DefaultCaseJsonSerializerSettings).CastTo<T>();
 
+        [return: MaybeNull]
         public static T FromSnakeCaseJson<T>(string value) =>
-            (T) JsonConvert.DeserializeObject(value, typeof(T), SnakeCaseJsonSerializerSettings);
+            JsonConvert.DeserializeObject(value, typeof(T), SnakeCaseJsonSerializerSettings).CastTo<T>();
 
 // MARK: - Methods: POCO to JSON
 
-        public static string ToJson(object value, JsonSerializerSettings settings) =>
+        public static string ToJson(object value, JsonSerializerSettings? settings = null) =>
             JsonConvert.SerializeObject(value, null, settings);
 
         public static string ToCamelCaseJson(object value) =>

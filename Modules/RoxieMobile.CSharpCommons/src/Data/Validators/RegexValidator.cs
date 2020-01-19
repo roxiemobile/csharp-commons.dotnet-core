@@ -12,7 +12,7 @@ namespace RoxieMobile.CSharpCommons.Data.Validators
 
 // MARK: - Methods
 
-        public bool IsValid(object value) =>
+        public bool IsValid(object? value) =>
             (value is string str) && _pattern.IsMatch(str);
 
 // MARK: - Variables
