@@ -9,7 +9,7 @@ namespace RoxieMobile.CSharpCommons.DataAnnotations.Attributes
 
         public MaxValueAttribute(long value)
         {
-            // Init instance variables
+            // Init instance
             _maxValue = value;
         }
 

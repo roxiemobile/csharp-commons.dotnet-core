@@ -9,7 +9,7 @@ namespace RoxieMobile.CSharpCommons.DataAnnotations.Attributes
 
         public MinValueAttribute(long value)
         {
-            // Init instance variables
+            // Init instance
             _minValue = value;
         }
 
