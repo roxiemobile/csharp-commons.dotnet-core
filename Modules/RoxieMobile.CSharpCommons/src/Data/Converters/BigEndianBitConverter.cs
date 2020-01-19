@@ -530,7 +530,7 @@ namespace RoxieMobile.CSharpCommons.Data.Converters
         /// <param name="count">Valid number of bytes within <paramref name="buffer"/> from <paramref name="startIndex"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="buffer"/> is null.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="startIndex"/> or <paramref name="count"/> is less than 0 -or- <paramref name="startIndex"/> and <paramref name="count"/> will exceed <paramref name="buffer"/> length.</exception>
-        private static void ValidateParameters(byte[] buffer, int startIndex, int count)
+        private static void ValidateParameters(byte[]? buffer, int? startIndex, int? count)
         {
             if (buffer == null) {
                 throw new ArgumentNullException(nameof(buffer));

@@ -16,7 +16,7 @@ namespace RoxieMobile.CSharpCommons.Data.Validators
 
 // MARK: - Methods
 
-        public bool IsValid(object value) =>
+        public bool IsValid(object? value) =>
             _validator.IsValid(value);
 
 // MARK: - Constants
