@@ -1,5 +1,8 @@
 ﻿using System;
 
+// IStringLocalizerFactory.cs
+// @link https://github.com/dotnet/extensions/blob/master/src/Localization/Abstractions/src/IStringLocalizerFactory.cs
+
 // ReSharper disable once CheckNamespace
 namespace RoxieMobile.CSharpCommons.Localization.Xml
 {

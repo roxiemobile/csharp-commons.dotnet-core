@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Resources;
+using RoxieMobile.CSharpCommons.Diagnostics;
 
 // ReSharper disable MemberCanBePrivate.Global
 namespace RoxieMobile.CSharpCommons.Localization.Xml.Resources
@@ -12,43 +13,50 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml.Resources
 // MARK: - Properties
 
         public static string Localization_MissingXmlResource =>
-            ResourceManager.GetString("Localization_MissingXmlResource", CultureInfo.InvariantCulture);
+            GetString("Localization_MissingXmlResource");
 
         public static string Localization_MissingXmlResource_Parent =>
-            ResourceManager.GetString("Localization_MissingXmlResource_Parent", CultureInfo.InvariantCulture);
+            GetString("Localization_MissingXmlResource_Parent");
 
         public static string ResourceReaderIsClosed =>
-            ResourceManager.GetString("ResourceReaderIsClosed", CultureInfo.InvariantCulture);
+            GetString("ResourceReaderIsClosed");
 
         public static string InvalidOperation_EnumEnded =>
-            ResourceManager.GetString("InvalidOperation_EnumEnded", CultureInfo.InvariantCulture);
+            GetString("InvalidOperation_EnumEnded");
 
         public static string InvalidOperation_EnumNotStarted =>
-            ResourceManager.GetString("InvalidOperation_EnumNotStarted", CultureInfo.InvariantCulture);
+            GetString("InvalidOperation_EnumNotStarted");
 
         public static string MissingResource_NoNeutralDisk =>
-            ResourceManager.GetString("MissingResource_NoNeutralDisk", CultureInfo.InvariantCulture);
+            GetString("MissingResource_NoNeutralDisk");
 
         public static string InvalidOperation_ResMgrBadResSet_Type =>
-            ResourceManager.GetString("InvalidOperation_ResMgrBadResSet_Type", CultureInfo.InvariantCulture);
+            GetString("InvalidOperation_ResMgrBadResSet_Type");
 
         public static string Argument_MustBeRuntimeAssembly =>
-            ResourceManager.GetString("Argument_MustBeRuntimeAssembly", CultureInfo.InvariantCulture);
+            GetString("Argument_MustBeRuntimeAssembly");
 
-        public static string Argument_MissingXmlResourceException =>
-            ResourceManager.GetString("Argument_MissingXmlResourceException", CultureInfo.InvariantCulture);
+        public static string Arg_MissingXmlResourceException =>
+            GetString("Arg_MissingXmlResourceException");
 
 // MARK: - Private Properties
 
         private static ResourceManager ResourceManager =>
-            new ResourceManager(typeof(Messages).FullName, typeof(Messages).Assembly);
+            new ResourceManager(typeof(Messages).FullName!, typeof(Messages).Assembly);
+
+        private static string GetString(string name)
+        {
+            var value = ResourceManager.GetString(name, CultureInfo.InvariantCulture);
+            Guard.NotNull(value, Funcs.Null(nameof(value)));
+            return value!;
+        }
 
 // MARK: - Methods
 
-        public static string FormatLocalization_MissingXmlResource(object p0) =>
+        public static string FormatLocalization_MissingXmlResource(object? p0) =>
             string.Format(CultureInfo.CurrentCulture, Localization_MissingXmlResource, p0);
 
-        public static string FormatInvalidOperation_ResMgrBadResSet_Type(object p0) =>
+        public static string FormatInvalidOperation_ResMgrBadResSet_Type(object? p0) =>
             string.Format(CultureInfo.CurrentCulture, InvalidOperation_ResMgrBadResSet_Type, p0);
     }
 }

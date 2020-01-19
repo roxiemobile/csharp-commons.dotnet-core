@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using Microsoft.Extensions.Localization;
+
+// IStringLocalizer.cs
+// @link https://github.com/dotnet/extensions/blob/master/src/Localization/Abstractions/src/IStringLocalizer.cs
 
 // ReSharper disable once CheckNamespace
 namespace RoxieMobile.CSharpCommons.Localization.Xml
@@ -33,12 +35,5 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         /// </param>
         /// <returns>The strings.</returns>
         IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures);
-
-        /// <summary>
-        /// Creates a new <see cref="IXmlStringLocalizer"/> for a specific <see cref="CultureInfo"/>.
-        /// </summary>
-        /// <param name="culture">The <see cref="CultureInfo"/> to use.</param>
-        /// <returns>A culture-specific <see cref="IXmlStringLocalizer"/>.</returns>
-        IXmlStringLocalizer WithCulture(CultureInfo culture);
     }
 }

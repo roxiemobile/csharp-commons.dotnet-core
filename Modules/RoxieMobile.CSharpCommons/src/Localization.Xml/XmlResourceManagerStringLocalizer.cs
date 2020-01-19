@@ -1,13 +1,18 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Localization.Internal;
-using RoxieMobile.CSharpCommons.Diagnostics;
-using RoxieMobile.CSharpCommons.Logging;
+using Microsoft.Extensions.Logging;
 using RoxieMobile.CSharpCommons.Localization.Xml.Internal;
+using RoxieMobile.CSharpCommons.Localization.Xml.Internal.Resources;
 using RoxieMobile.CSharpCommons.Localization.Xml.Resources;
+using RoxieMobile.CSharpCommons.Logging;
+
+// ResourceManagerStringLocalizer.cs
+// @link https://github.com/dotnet/extensions/blob/master/src/Localization/Localization/src/ResourceManagerStringLocalizer.cs
 
 namespace RoxieMobile.CSharpCommons.Localization.Xml
 {
@@ -16,72 +21,102 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
     /// <see cref="XmlResourceReader"/> to provide localized strings.
     /// </summary>
     /// <remarks>This type is thread-safe.</remarks>
-    public class XmlStringLocalizer : IXmlStringLocalizer
+    public class XmlResourceManagerStringLocalizer : IXmlStringLocalizer
     {
-        private static readonly string TAG = typeof(XmlStringLocalizer).Name;
-
-        private readonly ConcurrentDictionary<string, object> _missingManifestCache =
-            new ConcurrentDictionary<string, object>();
+        private readonly ConcurrentDictionary<string, object?> _missingManifestCache = new ConcurrentDictionary<string, object?>();
         private readonly IResourceNamesCache _resourceNamesCache;
         private readonly XmlResourceManager _resourceManager;
         private readonly IResourceStringProvider _resourceStringProvider;
         private readonly string _resourceBaseName;
+        private readonly ILogger _logger;
+
+        private static readonly string TAG = typeof(XmlResourceManagerStringLocalizer).Name;
 
         /// <summary>
-        /// Creates a new <see cref="XmlStringLocalizer"/>.
+        /// Creates a new <see cref="XmlResourceManagerStringLocalizer"/>.
         /// </summary>
         /// <param name="resourceManager">The <see cref="XmlResourceManager"/> to read strings from.</param>
         /// <param name="resourceAssembly">The <see cref="Assembly"/> that contains the strings as embedded resources.</param>
         /// <param name="baseName">The base name of the embedded resource that contains the strings.</param>
         /// <param name="resourceNamesCache">Cache of the list of strings for a given resource assembly name.</param>
-        public XmlStringLocalizer(
+        /// <param name="logger">The <see cref="ILogger"/>.</param>
+        public XmlResourceManagerStringLocalizer(
             XmlResourceManager resourceManager,
             Assembly resourceAssembly,
             string baseName,
-            IResourceNamesCache resourceNamesCache)
+            IResourceNamesCache resourceNamesCache,
+            ILogger logger)
             : this(
                 resourceManager,
                 new AssemblyWrapper(resourceAssembly),
                 baseName,
-                resourceNamesCache)
-        {}
+                resourceNamesCache,
+                logger)
+        {
+        }
 
         /// <summary>
         /// Intended for testing purposes only.
         /// </summary>
-        public XmlStringLocalizer(
+        public XmlResourceManagerStringLocalizer(
             XmlResourceManager resourceManager,
             AssemblyWrapper resourceAssemblyWrapper,
             string baseName,
-            IResourceNamesCache resourceNamesCache)
+            IResourceNamesCache resourceNamesCache,
+            ILogger logger)
             : this(
-                resourceManager,
-                new XmlStringProvider(
-                    resourceNamesCache,
-                    resourceManager,
-                    resourceAssemblyWrapper.Assembly),
-                baseName,
-                resourceNamesCache)
-        {}
+                  resourceManager,
+                  new XmlResourceManagerStringProvider(
+                      resourceNamesCache,
+                      resourceManager,
+                      resourceAssemblyWrapper.Assembly,
+                      baseName),
+                  baseName,
+                  resourceNamesCache,
+                  logger)
+        {
+        }
 
         /// <summary>
         /// Intended for testing purposes only.
         /// </summary>
-        public XmlStringLocalizer(
+        public XmlResourceManagerStringLocalizer(
             XmlResourceManager resourceManager,
             IResourceStringProvider resourceStringProvider,
             string baseName,
-            IResourceNamesCache resourceNamesCache)
+            IResourceNamesCache resourceNamesCache,
+            ILogger logger)
         {
-            Guard.NotNull(resourceManager, Funcs.Null(nameof(resourceManager)));
-            Guard.NotNull(resourceStringProvider, Funcs.Null(nameof(resourceStringProvider)));
-            Guard.NotNull(baseName, Funcs.Null(nameof(baseName)));
-            Guard.NotNull(resourceNamesCache, Funcs.Null(nameof(resourceNamesCache)));
+            if (resourceManager == null)
+            {
+                throw new ArgumentNullException(nameof(resourceManager));
+            }
+
+            if (resourceStringProvider == null)
+            {
+                throw new ArgumentNullException(nameof(resourceStringProvider));
+            }
+
+            if (baseName == null)
+            {
+                throw new ArgumentNullException(nameof(baseName));
+            }
+
+            if (resourceNamesCache == null)
+            {
+                throw new ArgumentNullException(nameof(resourceNamesCache));
+            }
+
+            if (logger == null)
+            {
+                throw new ArgumentNullException(nameof(logger));
+            }
 
             _resourceStringProvider = resourceStringProvider;
             _resourceManager = resourceManager;
             _resourceBaseName = baseName;
             _resourceNamesCache = resourceNamesCache;
+            _logger = logger;
         }
 
         /// <inheritdoc />
@@ -89,12 +124,14 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         {
             get
             {
-                Guard.NotNull(name, Funcs.Null(nameof(name)));
+                if (name == null)
+                {
+                    throw new ArgumentNullException(nameof(name));
+                }
 
                 var value = GetStringSafely(name, null);
 
-                return new LocalizedString(name, (value ?? name), resourceNotFound: (value == null),
-                    searchedLocation: _resourceBaseName);
+                return new LocalizedString(name, value ?? name, resourceNotFound: value == null, searchedLocation: _resourceBaseName);
             }
         }
 
@@ -103,35 +140,16 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         {
             get
             {
-                Guard.NotNull(name, Funcs.Null(nameof(name)));
+                if (name == null)
+                {
+                    throw new ArgumentNullException(nameof(name));
+                }
 
                 var format = GetStringSafely(name, null);
                 var value = string.Format(format ?? name, arguments);
 
-                return new LocalizedString(name, value, resourceNotFound: (format == null),
-                    searchedLocation: _resourceBaseName);
+                return new LocalizedString(name, value, resourceNotFound: format == null, searchedLocation: _resourceBaseName);
             }
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="XmlStringLocalizer"/> for a specific <see cref="CultureInfo"/>.
-        /// </summary>
-        /// <param name="culture">The <see cref="CultureInfo"/> to use.</param>
-        /// <returns>A culture-specific <see cref="XmlStringLocalizer"/>.</returns>
-        public IXmlStringLocalizer WithCulture(CultureInfo culture)
-        {
-            return culture == null
-                ? new XmlStringLocalizer(
-                    _resourceManager,
-                    _resourceStringProvider,
-                    _resourceBaseName,
-                    _resourceNamesCache)
-                : new XmlStringLocalizerWithCulture(
-                    _resourceManager,
-                    _resourceStringProvider,
-                    _resourceBaseName,
-                    _resourceNamesCache,
-                    culture);
         }
 
         /// <inheritdoc />
@@ -141,52 +159,60 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
         /// <summary>
         /// Returns all strings in the specified culture.
         /// </summary>
-        /// <param name="includeParentCultures"></param>
+        /// <param name="includeParentCultures">Whether to include parent cultures in the search for a resource.</param>
         /// <param name="culture">The <see cref="CultureInfo"/> to get strings for.</param>
         /// <returns>The strings.</returns>
         protected IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures, CultureInfo culture)
         {
-            Guard.NotNull(culture, Funcs.Null(nameof(culture)));
+            if (culture == null)
+            {
+                throw new ArgumentNullException(nameof(culture));
+            }
 
             var resourceNames = includeParentCultures
                 ? GetResourceNamesFromCultureHierarchy(culture)
                 : _resourceStringProvider.GetAllResourceStrings(culture, true);
 
-            foreach (var name in resourceNames) {
+            foreach (var name in resourceNames)
+            {
                 var value = GetStringSafely(name, culture);
-
-                yield return new LocalizedString(name, (value ?? name), resourceNotFound: (value == null),
-                    searchedLocation: _resourceBaseName);
+                yield return new LocalizedString(name, value ?? name, resourceNotFound: value == null, searchedLocation: _resourceBaseName);
             }
         }
 
         /// <summary>
-        /// Gets a resource string from the <see cref="XmlResourceManager"/> and returns <c>null</c> instead of
+        /// Gets a resource string from the <see cref="_resourceManager"/> and returns <c>null</c> instead of
         /// throwing exceptions if a match isn't found.
         /// </summary>
         /// <param name="name">The name of the string resource.</param>
         /// <param name="culture">The <see cref="CultureInfo"/> to get the string for.</param>
         /// <returns>The resource string, or <c>null</c> if none was found.</returns>
-        protected string GetStringSafely(string name, CultureInfo culture)
+        protected string? GetStringSafely(string name, CultureInfo? culture)
         {
-            Guard.NotNull(name, Funcs.Null(nameof(name)));
+            if (name == null)
+            {
+                throw new ArgumentNullException(nameof(name));
+            }
 
             var keyCulture = culture ?? CultureInfo.CurrentUICulture;
 
             var cacheKey = $"name={name}&culture={keyCulture.Name}";
 
-            Logger.D(TAG, $"{nameof(XmlStringLocalizer)} searched for '{name}' in '{_resourceBaseName}' with culture '{keyCulture}'.");
+//            _logger.SearchedLocation(name, _resourceBaseName, keyCulture);
 
-            if (_missingManifestCache.ContainsKey(cacheKey)) {
+            Logger.D(TAG, $"{nameof(XmlResourceManagerStringLocalizer)} searched for '{name}' in '{_resourceBaseName}' with culture '{keyCulture}'.");
+
+            if (_missingManifestCache.ContainsKey(cacheKey))
+            {
                 return null;
             }
 
-            try {
-                return (culture == null)
-                    ? _resourceManager.GetString(name)
-                    : _resourceManager.GetString(name, culture);
+            try
+            {
+                return culture == null ? _resourceManager.GetString(name) : _resourceManager.GetString(name, culture);
             }
-            catch (MissingXmlResourceException) {
+            catch (MissingXmlResourceException)
+            {
                 _missingManifestCache.TryAdd(cacheKey, null);
                 return null;
             }
@@ -198,19 +224,23 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
             var resourceNames = new HashSet<string>();
 
             var hasAnyCultures = false;
-            while (true) {
+
+            while (true)
+            {
 
                 var cultureResourceNames = _resourceStringProvider.GetAllResourceStrings(currentCulture, false);
-                if (cultureResourceNames != null) {
 
-                    foreach (var resourceName in cultureResourceNames) {
+                if (cultureResourceNames != null)
+                {
+                    foreach (var resourceName in cultureResourceNames)
+                    {
                         resourceNames.Add(resourceName);
                     }
-
                     hasAnyCultures = true;
                 }
 
-                if (Equals(currentCulture, currentCulture.Parent)) {
+                if (currentCulture == currentCulture.Parent)
+                {
                     // currentCulture begat currentCulture, probably time to leave
                     break;
                 }
@@ -218,7 +248,8 @@ namespace RoxieMobile.CSharpCommons.Localization.Xml
                 currentCulture = currentCulture.Parent;
             }
 
-            if (!hasAnyCultures) {
+            if (!hasAnyCultures)
+            {
                 throw new MissingXmlResourceException(Messages.Localization_MissingXmlResource_Parent);
             }
 
