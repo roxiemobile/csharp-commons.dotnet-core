@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RoxieMobile.CSharpCommons.Logging
 {
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public sealed partial class Logger
     {
 // MARK: - Construction
@@ -15,7 +17,7 @@ namespace RoxieMobile.CSharpCommons.Logging
 
 // MARK: - Properties
 
-        public Logger SetLogger(IContract logger)
+        public Logger SetLogger(IContract? logger)
         {
             lock (_syncLock) {
                 _logger = logger;
@@ -23,7 +25,7 @@ namespace RoxieMobile.CSharpCommons.Logging
             return this;
         }
 
-        private IContract GetLogger()
+        private IContract? GetLogger()
         {
             lock (_syncLock) {
                 return _logger;
@@ -90,7 +92,7 @@ namespace RoxieMobile.CSharpCommons.Logging
 
 // MARK: - Variables
 
-        private IContract _logger;
+        private IContract? _logger;
 
         private LogLevel _logLevel = LogLevel.Information;
 
