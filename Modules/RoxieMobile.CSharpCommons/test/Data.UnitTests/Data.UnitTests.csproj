@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>RoxieMobile.CSharpCommons.Data.UnitTests</AssemblyName>
-    <VersionPrefix>0.7.0</VersionPrefix>
+    <VersionPrefix>0.8.0</VersionPrefix>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageId>$(AssemblyName)</PackageId>
     <RootNamespace>$(AssemblyName)</RootNamespace>
