@@ -17,13 +17,14 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="action"/> is <c>null</c>.</exception>
         /// <exception cref="GuardError">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown.</exception>
-        public static void Throws<T>(Action action, string message = null) where T : Exception
+        public static void Throws<T>(Action action, string? message = null)
+            where T : Exception
         {
             if (action == null) {
                 throw new ArgumentNullException(nameof(action));
             }
 
-            if (TryIsFailure(() => Check.Throws<T>(action), out Exception cause)) {
+            if (TryIsFailure(() => Check.Throws<T>(action), out var cause)) {
                 throw NewGuardError(message, cause);
             }
         }
@@ -36,7 +37,8 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="block">The function which returns identifying message for the <see cref="GuardError"/>.</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="action"/> or <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="GuardError">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown.</exception>
-        public static void Throws<T>(Action action, Func<string> block) where T : Exception
+        public static void Throws<T>(Action action, Func<string> block)
+            where T : Exception
         {
             if (action == null) {
                 throw new ArgumentNullException(nameof(action));
@@ -45,7 +47,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
                 throw new ArgumentNullException(nameof(block));
             }
 
-            if (TryIsFailure(() => Check.Throws<T>(action), out Exception cause)) {
+            if (TryIsFailure(() => Check.Throws<T>(action), out var cause)) {
                 throw NewGuardError(block(), cause);
             }
         }

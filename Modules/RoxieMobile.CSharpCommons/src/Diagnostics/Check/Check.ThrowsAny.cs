@@ -20,14 +20,14 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="action"/> is <c>null</c>.</exception>
         /// <exception cref="CheckException">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown.</exception>
-        public static void ThrowsAny<T>(Action action, string message = null)
+        public static void ThrowsAny<T>(Action action, string? message = null)
             where T : Exception
         {
             if (action == null) {
                 throw new ArgumentNullException(nameof(action));
             }
 
-            if (!TryThrowsAny<T>(action, () => message, out CheckException exception)) {
+            if (!TryThrowsAny<T>(action, () => message, out var exception)) {
                 throw exception;
             }
         }
@@ -50,7 +50,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
                 throw new ArgumentNullException(nameof(block));
             }
 
-            if (!TryThrowsAny<T>(action, block, out CheckException exception)) {
+            if (!TryThrowsAny<T>(action, block, out var exception)) {
                 throw exception;
             }
         }
@@ -58,10 +58,10 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 // MARK: - Private Methods
 
         [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
-        private static bool TryThrowsAny<T>(Action action, Func<string> block, out CheckException exception)
+        private static bool TryThrowsAny<T>(Action action, Func<string?> block, [NotNullWhen(false)] out CheckException? exception)
             where T : Exception
         {
-            Exception cause = null;
+            Exception? cause = null;
             exception = null;
 
             try {

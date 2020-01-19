@@ -16,7 +16,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="actual">The object to compare to <see cref="expected"/>.</param>
         /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
         /// <exception cref="CheckException" />
-        public static void Same(object expected, object actual, string message = null)
+        public static void Same(object? expected, object? actual, string? message = null)
         {
             if (!ReferenceEquals(expected, actual)) {
                 throw NewCheckException(message);
@@ -31,7 +31,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="CheckException" />
-        public static void Same(object expected, object actual, Func<string> block)
+        public static void Same(object? expected, object? actual, Func<string> block)
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));

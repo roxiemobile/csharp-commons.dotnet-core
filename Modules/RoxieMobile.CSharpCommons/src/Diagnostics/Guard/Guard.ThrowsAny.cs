@@ -17,14 +17,14 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="action"/> is <c>null</c>.</exception>
         /// <exception cref="GuardError">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown.</exception>
-        public static void ThrowsAny<T>(Action action, string message = null)
+        public static void ThrowsAny<T>(Action action, string? message = null)
             where T : Exception
         {
             if (action == null) {
                 throw new ArgumentNullException(nameof(action));
             }
 
-            if (TryIsFailure(() => Check.ThrowsAny<T>(action), out Exception cause)) {
+            if (TryIsFailure(() => Check.ThrowsAny<T>(action), out var cause)) {
                 throw NewGuardError(message, cause);
             }
         }
@@ -47,7 +47,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
                 throw new ArgumentNullException(nameof(block));
             }
 
-            if (TryIsFailure(() => Check.ThrowsAny<T>(action), out Exception cause)) {
+            if (TryIsFailure(() => Check.ThrowsAny<T>(action), out var cause)) {
                 throw NewGuardError(block(), cause);
             }
         }

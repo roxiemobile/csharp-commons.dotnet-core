@@ -14,7 +14,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 // Guard.AllNull.cs
 // Guard.AllNullOrNotValid.cs
 // Guard.AllNullOrValid.cs
-// Guard.AllValid.cs
+
+        // Guard.AllValid.cs
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Func<string> NotAllValid(string name) =>
+            () => $"Some objects of ‘{name}’ is invalid";
 
         // Guard.Blank.cs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

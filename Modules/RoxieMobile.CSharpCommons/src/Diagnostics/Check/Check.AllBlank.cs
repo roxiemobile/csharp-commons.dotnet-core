@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RoxieMobile.CSharpCommons.Extensions;
 
@@ -12,39 +13,39 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
 // MARK: - Methods
 
         /// <summary>
-        /// Checks that all a string objects in array is <c>null</c>, empty or contains only whitespace characters.
+        /// Checks that all a string objects in collection is <c>null</c>, empty or contains only whitespace characters.
         /// </summary>
-        /// <param name="values">An array of string objects.</param>
+        /// <param name="collection">A collection of string objects.</param>
         /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
         /// <exception cref="CheckException" />
-        public static void AllBlank(string[] values, string message = null)
+        public static void AllBlank(IEnumerable<string?>? collection, string? message = null)
         {
-            if (!TryAllBlank(values)) {
+            if (!TryAllBlank(collection)) {
                 throw NewCheckException(message);
             }
         }
 
         /// <summary>
-        /// Checks that all a string objects in array is <c>null</c>, empty or contains only whitespace characters.
+        /// Checks that all a string objects in collection is <c>null</c>, empty or contains only whitespace characters.
         /// </summary>
-        /// <param name="values">An array of string objects.</param>
+        /// <param name="collection">A collection of string objects.</param>
         /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="CheckException" />
-        public static void AllBlank(string[] values, Func<string> block)
+        public static void AllBlank(IEnumerable<string?>? collection, Func<string> block)
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));
             }
 
-            if (!TryAllBlank(values)) {
+            if (!TryAllBlank(collection)) {
                 throw NewCheckException(block());
             }
         }
 
 // MARK: - Private Methods
 
-        private static bool TryAllBlank(string[] values) =>
-            values.IsEmpty() || values.All(s => s.IsBlank());
+        private static bool TryAllBlank(IEnumerable<string?>? collection) =>
+            (collection == null) || collection.All(s => s.IsBlank());
     }
 }

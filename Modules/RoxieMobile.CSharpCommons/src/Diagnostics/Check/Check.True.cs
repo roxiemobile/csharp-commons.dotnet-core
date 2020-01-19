@@ -15,7 +15,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="condition">Condition to be checked.</param>
         /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
         /// <exception cref="CheckException" />
-        public static void True(bool condition, string message = null)
+        public static void True(bool condition, string? message = null)
         {
             if (!condition) {
                 throw NewCheckException(message);

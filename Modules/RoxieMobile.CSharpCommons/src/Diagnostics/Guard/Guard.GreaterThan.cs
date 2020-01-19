@@ -17,10 +17,10 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="min">The minimum.</param>
         /// <param name="message">The identifying message for the <see cref="GuardError"/> (<c>null</c> okay).</param>
         /// <exception cref="GuardError" />
-        public static void GreaterThan<T>(T value, T min, string message = null)
-            where T : IComparable<T>
+        public static void GreaterThan<T>(T value, T min, string? message = null)
+            where T : notnull, IComparable<T>
         {
-            if (TryIsFailure(() => Check.GreaterThan(value, min), out Exception cause)) {
+            if (TryIsFailure(() => Check.GreaterThan(value, min), out var cause)) {
                 throw NewGuardError(message, cause);
             }
         }
@@ -35,13 +35,13 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="GuardError" />
         public static void GreaterThan<T>(T value, T min, Func<string> block)
-            where T : IComparable<T>
+            where T : notnull, IComparable<T>
         {
             if (block == null) {
                 throw new ArgumentNullException(nameof(block));
             }
 
-            if (TryIsFailure(() => Check.GreaterThan(value, min), out Exception cause)) {
+            if (TryIsFailure(() => Check.GreaterThan(value, min), out var cause)) {
                 throw NewGuardError(block(), cause);
             }
         }

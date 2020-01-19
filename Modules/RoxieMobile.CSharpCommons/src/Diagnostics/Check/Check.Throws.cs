@@ -19,13 +19,14 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="message">The identifying message for the <see cref="CheckException"/> (<c>null</c> okay).</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="action"/> is <c>null</c>.</exception>
         /// <exception cref="CheckException">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown.</exception>
-        public static void Throws<T>(Action action, string message = null) where T : Exception
+        public static void Throws<T>(Action action, string? message = null)
+            where T : Exception
         {
             if (action == null) {
                 throw new ArgumentNullException(nameof(action));
             }
 
-            if (!TryThrows<T>(action, () => message, out CheckException exception)) {
+            if (!TryThrows<T>(action, () => message, out var exception)) {
                 throw exception;
             }
         }
@@ -38,7 +39,8 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
         /// <param name="block">The function which returns identifying message for the <see cref="CheckException"/>.</param>
         /// <exception cref="ArgumentNullException">Thrown when the <see cref="action"/> or <see cref="block"/> is <c>null</c>.</exception>
         /// <exception cref="CheckException">Thrown when an exception was not thrown, or when an exception of the incorrect type is thrown.</exception>
-        public static void Throws<T>(Action action, Func<string> block) where T : Exception
+        public static void Throws<T>(Action action, Func<string> block)
+            where T : Exception
         {
             if (action == null) {
                 throw new ArgumentNullException(nameof(action));
@@ -47,19 +49,18 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
                 throw new ArgumentNullException(nameof(block));
             }
 
-            if (!TryThrows<T>(action, block, out CheckException exception)) {
+            if (!TryThrows<T>(action, block, out var exception)) {
                 throw exception;
             }
         }
 
 // MARK: - Private Methods
 
-        [SuppressMessage("ReSharper", "CheckForReferenceEqualityInstead.1")]
         [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
-        private static bool TryThrows<T>(Action action, Func<string> block, out CheckException exception)
+        private static bool TryThrows<T>(Action action, Func<string?> block, [NotNullWhen(false)] out CheckException? exception)
             where T : Exception
         {
-            Exception cause = null;
+            Exception? cause = null;
             exception = null;
 
             try {
@@ -78,7 +79,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics
                             : $"Expected {typeof(T).Name} to be thrown, but nothing was thrown.",
                         cause);
                 }
-                else if (!typeof(T).Equals(cause.GetType())) {
+                else if (typeof(T) != cause.GetType()) {
                     var message = block();
 
                     exception = NewCheckException(message.IsNotEmpty()
