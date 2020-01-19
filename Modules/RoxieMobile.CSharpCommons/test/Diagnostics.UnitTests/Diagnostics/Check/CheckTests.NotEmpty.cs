@@ -7,6 +7,7 @@ using static RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Helpers.Arrays;
 
 namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
 {
+    [SuppressMessage("ReSharper", "ConstantConditionalAccessQualifier")]
     [SuppressMessage("ReSharper", "ExpressionIsAlwaysNull")]
     [SuppressMessage("ReSharper", "SuggestVarOrType_Elsewhere")]
     public partial class CheckTests
@@ -19,7 +20,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         {
             const string value = "value";
             const string otherValue = "otherValue";
-            const string nilValue = null;
+            const string? nilValue = null;
             const string emptyValue = "";
 
 
@@ -34,7 +35,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             string[] array = ToArray(value, otherValue);
-            string[] nilArray = null;
+            string[]? nilArray = null;
             string[] emptyArray = {};
 
             CheckThrowsException($"{method}_Array",
@@ -48,11 +49,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             List<string> list = ToArray(value, otherValue).ToList();
-            List<string> nilList = null;
+            List<string>? nilList = null;
             List<string> emptyList = new List<string>();
 
             CheckThrowsException($"{method}_List",
-                () => Check.NotEmpty(nilList.AsCollection()));
+                () => Check.NotEmpty(nilList?.AsCollection()));
             CheckThrowsException($"{method}_List",
                 () => Check.NotEmpty(emptyList.AsCollection()));
 
@@ -62,7 +63,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             CheckThrowsException($"{method}_List",
-                () => Check.NotEmpty(nilList.AsReadOnlyCollection()));
+                () => Check.NotEmpty(nilList?.AsReadOnlyCollection()));
             CheckThrowsException($"{method}_List",
                 () => Check.NotEmpty(emptyList.AsReadOnlyCollection()));
 
@@ -72,11 +73,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             Dictionary<string, string> map = list.ToDictionary(item => item, item => item);
-            Dictionary<string, string> nilMap = null;
+            Dictionary<string, string>? nilMap = null;
             Dictionary<string, string> emptyMap = new Dictionary<string, string>();
 
             CheckThrowsException($"{method}_Dictionary",
-                () => Check.NotEmpty(nilMap.AsCollection()));
+                () => Check.NotEmpty(nilMap?.AsCollection()));
             CheckThrowsException($"{method}_Dictionary",
                 () => Check.NotEmpty(emptyMap.AsCollection()));
 
@@ -86,7 +87,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             // --
 
             CheckThrowsException($"{method}_Dictionary",
-                () => Check.NotEmpty(nilMap.AsReadOnlyCollection()));
+                () => Check.NotEmpty(nilMap?.AsReadOnlyCollection()));
             CheckThrowsException($"{method}_Dictionary",
                 () => Check.NotEmpty(emptyMap.AsReadOnlyCollection()));
 

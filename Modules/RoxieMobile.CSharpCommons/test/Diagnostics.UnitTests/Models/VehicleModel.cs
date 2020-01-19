@@ -6,13 +6,24 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Models
 {
     public class VehicleModel : AbstractValidatableModel
     {
+// MARK: - Construction
+
+        public VehicleModel(
+            string model,
+            string color)
+        {
+            // Init instance
+            this.Model = model;
+            this.Color = color;
+        }
+
 // MARK: - Properties
 
         [Required]
-        public string Model { get; set; }
+        public string Model { get; }
 
         [Required]
-        public string Color { get; set; }
+        public string Color { get; }
 
 // MARK: - Methods
 

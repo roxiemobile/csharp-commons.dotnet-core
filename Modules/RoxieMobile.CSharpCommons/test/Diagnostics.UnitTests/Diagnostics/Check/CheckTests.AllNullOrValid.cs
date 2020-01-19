@@ -17,11 +17,11 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
         public void AllNullOrValid(string method)
         {
             IValidatable validObject = new ValidModel();
-            IValidatable nilObject = null;
+            IValidatable? nilObject = null;
             IValidatable notValidObject = new NotValidModel();
 
-            IValidatable[] array = ToArray(validObject, nilObject);
-            IValidatable[] nilArray = null;
+            IValidatable?[] array = ToArray(validObject, nilObject);
+            IValidatable[]? nilArray = null;
             IValidatable[] emptyArray = {};
 
 

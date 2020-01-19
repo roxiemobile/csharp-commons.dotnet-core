@@ -32,7 +32,7 @@ namespace RoxieMobile.CSharpCommons.Diagnostics.UnitTests.Diagnostics
             var json = LoadJsonString(fileName);
             Assert.NotNull($"Could not parse JSON from file ‘Fixtures/{fileName}.json’");
 
-            ParkingModel parking = null;
+            ParkingModel? parking = null;
 
             CheckThrowsException($"{method}_Model", typeof(JsonSerializationException),
                 () => parking = JsonCoder.FromSnakeCaseJson<ParkingModel>(json));
