@@ -49,10 +49,11 @@ namespace RoxieMobile.CSharpCommons.Logging
 
 // MARK: - Methods
 
-        public static bool IsLoggable(LogLevel level)
-        {
-            return level >= Shared.GetLogLevel();
-        }
+        public static bool IsLoggable(LogLevel level) =>
+            level >= Shared.GetLogLevel();
+
+        public static bool IsNotLoggable(LogLevel level) =>
+            !IsLoggable(level);
 
 // MARK: - Inner Types
 
