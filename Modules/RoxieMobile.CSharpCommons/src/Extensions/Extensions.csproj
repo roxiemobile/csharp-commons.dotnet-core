@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>RoxieMobile.CSharpCommons.Extensions</AssemblyName>
-    <VersionPrefix>0.8.1</VersionPrefix>
+    <VersionPrefix>0.8.2</VersionPrefix>
     <Title>$(AssemblyName)</Title>
     <Description>A collection of useful type extensions used for .NET Core application development.</Description>
     <PackageProjectUrl>https://github.com/roxiemobile/csharp-commons.dotnet-core</PackageProjectUrl>
